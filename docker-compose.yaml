@@ -3,9 +3,38 @@ version: "3"
 services:
   backend:
     build:
+      context: https://github.com/AlexandrMaltsevYDX/dashboard.git#main
       dockerfile: Dockerfile
+    entrypoint: /usr/local/bin/entrypoint.sh
     command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     volumes:
       - .:/app
+      - media:/app/media
+      - static:/app/staticroot
+    networks:
+      - dashboard_networks
+
+  nginx:
+    image: nginx:1.24-alpine-slim
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    volumes:
+      - ./infra/nginx/:/etc/nginx/conf.d/
+      - media:/media
+      - static:/staticroot
+    depends_on:
+      - backend
+    networks:
+      - dashboard_networks
+
+volumes:
+  media:
+    driver: local
+  static:
+    driver: local
+networks:
+  dashboard_networks:
+    driver: bridge

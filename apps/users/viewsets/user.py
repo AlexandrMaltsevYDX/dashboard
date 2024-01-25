@@ -4,7 +4,11 @@ from apps.users.models import User
 from apps.users.serializers import UserSerializer
 
 
-class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
+class UserViewSet(
+    viewsets.GenericViewSet,
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-

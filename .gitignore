@@ -101,13 +101,15 @@ celerybeat-schedule.*
 *.sage.py 
 
 # Environments 
-.env 
+.env
+.env.local
 .venv 
 env/ 
 venv/ 
 ENV/ 
 env.bak/ 
-venv.bak/ 
+venv.bak/
+staticroot
 
 # mkdocs documentation 
 /site 

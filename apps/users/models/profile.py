@@ -1,9 +1,38 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-from apps.core.models.base import BaseModel
-from src import settings
+from apps.core.models.base import BaseModel, TimeStampedModel
+from .user import User
 
 
-class UserProfileModel(BaseModel):
-    user = models.OneToOneRel(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    description = models.TextField()
+class EmployeeProfileModel(TimeStampedModel, BaseModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.username = self.user.username
+        self.first_name = self.user.first_name
+        self.last_name = self.user.last_name
+        super().save(*args, **kwargs)
+
+
+@receiver(post_save, sender=User)
+def create_or_update_employee_profile(sender, instance, created, **kwargs):
+    try:
+        employee_profile = instance.employeeprofilemodel
+    except EmployeeProfileModel.DoesNotExist:
+        employee_profile = None
+
+    if created or not employee_profile:
+        # If the User is created or no associated EmployeeProfileModel exists, create a new one.
+        EmployeeProfileModel.objects.create(user=instance)
+    else:
+        # If an associated EmployeeProfileModel exists, update it with new data.
+        employee_profile.username = instance.username
+        employee_profile.first_name = instance.first_name
+        employee_profile.last_name = instance.last_name
+        employee_profile.save()
