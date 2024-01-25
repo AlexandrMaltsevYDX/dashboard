@@ -47,16 +47,14 @@ class EmployeeProfileModelAdmin(admin.ModelAdmin):
     ]
 
     def avatars(self, obj):
-        avatars = obj.employeeprofileavatarmodel_set.all().values_list(
-            "image", flat=True
-        )
+        avatars = obj.avatars.all().values_list("image", flat=True)
         return ", ".join(str(avatar) for avatar in avatars)
 
     avatars.short_description = "Avatars"
 
     def preview_avatar(self, obj):
         """for local"""
-        avatars = obj.employeeprofileavatarmodel_set.all()
+        avatars = obj.avatars.all()
 
         return format_html(
             "<br>".join(
