@@ -11,6 +11,11 @@ class EmployeeProfileModel(TimeStampedModel, BaseModel):
     username = models.CharField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
+    position = models.CharField(max_length=255, blank=True)
+    work_email = models.CharField(max_length=255, blank=True)
+    phone_number = models.CharField(max_length=255, blank=True)
+    telegram_link = models.CharField(max_length=255, blank=True)
+    whatsapp_link = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
 
     def save(self, *args, **kwargs):

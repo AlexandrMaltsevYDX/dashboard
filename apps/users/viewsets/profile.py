@@ -6,8 +6,14 @@ from apps.users.serializers import EmployeeProfileModelSerializer
 
 #
 class EmployeeProfileListViewset(
-    viewsets.GenericViewSet,
     mixins.ListModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.RetrieveModelMixin,
+    viewsets.GenericViewSet,
 ):
     queryset = EmployeeProfileModel.objects.all().prefetch_related("avatars")
     serializer_class = EmployeeProfileModelSerializer
+    http_method_names = [
+        "put",
+        "get",
+    ]
