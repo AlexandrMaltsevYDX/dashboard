@@ -10,10 +10,11 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 
-COPY ./requirements.txt .
+#COPY ./requirements.txt .
+COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-COPY . .
+
 
 # copy project
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
