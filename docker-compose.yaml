@@ -6,7 +6,7 @@ services:
     ports:
       - '5432:5432'
     env_file:
-      - 'infra/postgres/.env'
+      - infra/postgres/.env
     volumes:
       - database_data:/var/lib/postgresql/data
     networks:
@@ -17,7 +17,7 @@ services:
       context: https://github.com/AlexandrMaltsevYDX/dashboard.git#main
       dockerfile: Dockerfile
     env_file:
-      - 'infra/postgres/.env'
+      - infra/postgres/.env
     entrypoint: /usr/local/bin/entrypoint.sh
     command: gunicorn --bind 0.0.0.0:8000 src.wsgi
     expose:
