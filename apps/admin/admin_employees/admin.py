@@ -53,7 +53,11 @@ class EmployeeProfileProxyModel(admin.ModelAdmin):
 
     def avatar_main(self, obj):
         avatars = obj.avatars.all()
-        return format_html('<img src="{}" height="50"/>'.format(avatars[0].image.url))
+        if len(avatars) > 0:
+            return format_html(
+                '<img src="{}" height="50"/>'.format(avatars[0].image.url)
+            )
+        return "avatar"
 
     avatars.short_description = "Avatars"
     avatar_main.short_description = "Avatar"
