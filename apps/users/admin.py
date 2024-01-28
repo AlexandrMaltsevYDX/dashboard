@@ -21,10 +21,13 @@ class AvatarsInline(admin.TabularInline):
 class EmployeeProfileModelAdmin(admin.ModelAdmin):
     inlines = [AvatarsInline]
     list_display = [
-        "user",
-        "username",
         "first_name",
         "last_name",
+        "position",
+        "work_email",
+        "phone_number",
+        "telegram_link",
+        "whatsapp_link",
         "description",
         "avatars",
     ]  # Customize as needed
@@ -35,10 +38,13 @@ class EmployeeProfileModelAdmin(admin.ModelAdmin):
             "Profile Details",
             {
                 "fields": [
-                    "user",
-                    "username",
                     "first_name",
                     "last_name",
+                    "position",
+                    "work_email",
+                    "phone_number",
+                    "telegram_link",
+                    "whatsapp_link",
                     "description",
                     "preview_avatar",
                 ]

@@ -1,12 +1,25 @@
 version: "3"
 
 services:
+  database:
+    image: postgres:15-alpine
+    ports:
+      - '5432:5432'
+    env_file:
+      - 'infra/postgres/.env'
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    networks:
+      - dashboard_networks
+
   backend:
     build:
       context: https://github.com/AlexandrMaltsevYDX/dashboard.git#main
       dockerfile: Dockerfile
+    env_file:
+      - 'infra/postgres/.env'
     entrypoint: /usr/local/bin/entrypoint.sh
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --bind 0.0.0.0:8000 src.wsgi
     expose:
       - "8000"
     volumes:
@@ -34,6 +47,8 @@ volumes:
   media:
     driver: local
   static:
+    driver: local
+  database_data:
     driver: local
 networks:
   dashboard_networks:

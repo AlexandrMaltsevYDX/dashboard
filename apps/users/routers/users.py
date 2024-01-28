@@ -3,5 +3,5 @@ from apps.users.viewsets import UserViewSet, EmployeeProfileListViewset
 
 router = routers.DefaultRouter()
 
-router.register(r"users", UserViewSet)
+router.register(r"", UserViewSet)
 router.register(r"profile", EmployeeProfileListViewset)
