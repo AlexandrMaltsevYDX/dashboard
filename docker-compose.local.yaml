@@ -6,3 +6,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
+  nginx:
+    image: nginx:1.24-alpine-slim
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    volumes:
+      - ./infra/nginx/my_nginx.conf:/etc/nginx/conf.d/my_nginx.conf
+      - media:/media
+      - static:/staticroot
+    depends_on:
+      - backend
+    networks:
+      - dashboard_networks

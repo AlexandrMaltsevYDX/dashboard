@@ -30,14 +30,17 @@ services:
       - dashboard_networks
 
   nginx:
-    image: nginx:1.24-alpine-slim
+    image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
       - '80:80'
+      - '81:81'
+      - '443:443'
     volumes:
-      - ./infra/nginx/:/etc/nginx/conf.d/
       - media:/media
       - static:/staticroot
+      - nginx_data:/data
+      - nginx_letsencrypt:/etc/letsencrypt
     depends_on:
       - backend
     networks:
@@ -49,6 +52,10 @@ volumes:
   static:
     driver: local
   database_data:
+    driver: local
+  nginx_data:
+    driver: local
+  nginx_letsencrypt:
     driver: local
 networks:
   dashboard_networks:
