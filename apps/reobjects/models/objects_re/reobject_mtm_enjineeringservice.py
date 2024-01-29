@@ -2,18 +2,21 @@ from django.db.models import ForeignKey, CASCADE
 
 # models
 from apps.core.models.base import BaseModel
+from apps.reobjects import models
 from . import (
     reobject,
-    images,
+    image,
 )
 
 
-class ReObjectMedia(BaseModel):
+class ReObjectEngineeringServices(BaseModel):
     re_object = ForeignKey(
         reobject.ReObject,
         on_delete=CASCADE,
+        related_name="re_objects",
     )
-    media = ForeignKey(
-        images.ReImage,
+    engineering_service = ForeignKey(
+        models.attributes.EngineeringServices,
         on_delete=CASCADE,
+        related_name="engineering_services",
     )

@@ -1,20 +1,17 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
-from . import models
-from .models.attributes import Category
+from .models import ReObjectProxy, ReObjectImageProxy, ReObjectEngineeringServicesProxy
 
 
-admin.site.register(models.attributes.Category)
-
-
-class ReObjectImageInline(admin.TabularInline):
-    model = models.objects_re.ReObjectImage
+class ReObjectImageProxyInline(admin.TabularInline):
+    model = ReObjectImageProxy
     extra = 1
 
 
-@admin.register(models.objects_re.ReObject)
-class ReObjectModel(admin.ModelAdmin):
-    inlines = [ReObjectImageInline]
+@admin.register(ReObjectProxy)
+class ReObjectProxyModel(admin.ModelAdmin):
+    inlines = [ReObjectImageProxyInline]
     list_display = [
         "photos_main",
         "id",
@@ -70,3 +67,6 @@ class ReObjectModel(admin.ModelAdmin):
         )
 
     preview_photo.short_description = "Photo Preview"
+
+
+# Register your models here.

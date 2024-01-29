@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     "apps.admin.admin_service",
     "apps.admin.admin_employees",
     "apps.admin.admin_attributes",
+    "apps.admin.admin_objects",
 ]
 
 MIDDLEWARE = [
