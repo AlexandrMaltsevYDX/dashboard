@@ -1,10 +1,27 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from . import models
-from .models.attributes import Category
 
 
 admin.site.register(models.attributes.Category)
+admin.site.register(models.attributes.TypeHouse)
+admin.site.register(models.attributes.WallMaterial)
+admin.site.register(models.attributes.WindowsOrientation)
+admin.site.register(models.attributes.Ownership)
+admin.site.register(models.attributes.LandCategory)
+admin.site.register(models.attributes.ReliefArea)
+admin.site.register(models.attributes.Fencing)
+admin.site.register(models.attributes.Foundation)
+admin.site.register(models.attributes.VillageFences)
+admin.site.register(models.attributes.EngineeringServices)
+admin.site.register(models.place.Place)
+admin.site.register(models.place.City)
+admin.site.register(models.place.Country)
+admin.site.register(models.place.Coordinates)
+admin.site.register(models.place.Region)
+admin.site.register(models.place.District)
+admin.site.register(models.place.Street)
+admin.site.register(models.place.Tag)
 
 
 class ReObjectImageInline(admin.TabularInline):

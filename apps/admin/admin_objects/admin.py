@@ -9,12 +9,18 @@ class ReObjectImageProxyInline(admin.TabularInline):
     extra = 1
 
 
+class ReObjectEngineeringServicesProxyInline(admin.StackedInline):
+    model = ReObjectEngineeringServicesProxy
+    extra = 1
+
+
 @admin.register(ReObjectProxy)
 class ReObjectProxyModel(admin.ModelAdmin):
-    inlines = [ReObjectImageProxyInline]
+    inlines = [ReObjectImageProxyInline, ReObjectEngineeringServicesProxyInline]
     list_display = [
         "photos_main",
         "id",
+        "place",
         "category",
         "type_house",
         "number_of_storeys",
@@ -34,11 +40,11 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "buildings_on_site",
         "buildings_of_villages",
         "village_fences",
+        "display_engineering_services",
         "object_description",
-        "place",
     ]  # Customize as needed
 
-    readonly_fields = ("preview_photo", "photos_main")
+    readonly_fields = ("preview_photo", "photos_main", "display_engineering_services")
 
     def photos(self, obj):
         photos = obj.photos.all().values_list("image", flat=True)
@@ -52,8 +58,15 @@ class ReObjectProxyModel(admin.ModelAdmin):
             )
         return "avatar"
 
+    def display_engineering_services(self, obj):
+        engineering_services = obj.re_objects.all().values_list(
+            "engineering_service__value", flat=True
+        )
+        return ", ".join(engineering_services)
+
     photos.short_description = "Photos"
     photos_main.short_description = "Photo"
+    display_engineering_services.short_description = "Engineering Services"
 
     def preview_photo(self, obj):
         """for local"""
