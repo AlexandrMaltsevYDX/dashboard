@@ -7,6 +7,8 @@ from .models import ReObjectProxy, ReObjectImageProxy, ReObjectEngineeringServic
 class ReObjectImageProxyInline(admin.TabularInline):
     model = ReObjectImageProxy
     extra = 1
+    fields = ("image", "uuid")
+    exclude = ("uuid",)
 
 
 class ReObjectEngineeringServicesProxyInline(admin.StackedInline):

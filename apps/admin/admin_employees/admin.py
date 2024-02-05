@@ -9,6 +9,8 @@ from .models import EmployeeProfileProxyModel, EmployeeProfileAvatarModel
 class AvatarsProxyInline(admin.TabularInline):
     model = EmployeeProfileAvatarModel
     extra = 1
+    fields = ("image", "uuid")
+    exclude = ("uuid",)
 
 
 @admin.register(EmployeeProfileProxyModel)

@@ -11,13 +11,15 @@ admin.site.register(models.posts.PostImageModel)
 class PostImageInline(admin.TabularInline):
     model = models.posts.PostImageModel
     extra = 1
-    fields = ("image",)
+    fields = ("image", "uuid")
+    exclude = ("uuid",)
 
 
 class PostTagsInline(admin.StackedInline):
     model = models.posts.PostTagsModel
     extra = 1
-    fields = ("tag",)
+    fields = ("tag", "uuid")
+    exclude = ("uuid",)
 
 
 @admin.register(models.posts.Post)
