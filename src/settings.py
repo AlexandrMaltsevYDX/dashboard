@@ -67,7 +67,6 @@ INSTALLED_APPS = [
     "apps.blog",
     # admin
     "apps.admin",
-    "apps.admin.admin_place",
     "apps.admin.admin_service",
     "apps.admin.admin_employees",
     "apps.admin.admin_attributes",

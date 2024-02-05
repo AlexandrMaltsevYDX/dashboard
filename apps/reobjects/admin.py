@@ -14,14 +14,6 @@ admin.site.register(models.attributes.Fencing)
 admin.site.register(models.attributes.Foundation)
 admin.site.register(models.attributes.VillageFences)
 admin.site.register(models.attributes.EngineeringServices)
-admin.site.register(models.place.Place)
-admin.site.register(models.place.City)
-admin.site.register(models.place.Country)
-admin.site.register(models.place.Coordinates)
-admin.site.register(models.place.Region)
-admin.site.register(models.place.District)
-admin.site.register(models.place.Street)
-admin.site.register(models.place.Tag)
 
 
 class ReObjectImageInline(admin.TabularInline):
@@ -55,7 +47,6 @@ class ReObjectModel(admin.ModelAdmin):
         "buildings_of_villages",
         "village_fences",
         "object_description",
-        "place",
     ]  # Customize as needed
 
     readonly_fields = ("preview_photo", "photos_main")

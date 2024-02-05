@@ -20,7 +20,6 @@ class ReObjectProxyModel(admin.ModelAdmin):
     list_display = [
         "photos_main",
         "id",
-        "place",
         "category",
         "type_house",
         "number_of_storeys",

@@ -77,7 +77,6 @@ class ReObjectModelSerializer(ModelSerializer):
         read_only=True,
         slug_field="value",
     )
-    place = serializers.place.PlaceModelSerializer()
     photos = ReObjectImageModelSerializer(
         many=True,
         read_only=True,
@@ -113,7 +112,6 @@ class ReObjectModelSerializer(ModelSerializer):
             "buildings_of_villages",
             "village_fences",
             "object_description",
-            "place",
             "photos",
             "images",
             "services",

@@ -176,15 +176,6 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Текст в markdown",
     )
 
-    place = ForeignKey(
-        models.place.Place,
-        on_delete=CASCADE,
-        null=True,
-        blank=True,
-        verbose_name="Адрес",
-        help_text="Укажите месторасположение объекта",
-    )
-
     class Meta:
         verbose_name = "Объекты недвижимости"
         verbose_name_plural = "Объекты недвижимости"
