@@ -52,3 +52,8 @@ router.register(
     prefix=r"object-description",
     viewset=viewsets.attributes.ObjectDescriptionModelViewSet,
 )
+
+router.register(
+    prefix=r"coordinates",
+    viewset=viewsets.attributes.CoordinatesModelViewSet,
+)

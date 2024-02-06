@@ -75,7 +75,7 @@ class EmployeeProfileProxyModel(admin.ModelAdmin):
             )
         )
 
-    preview_avatar.short_description = "Avatar Preview"
+    preview_avatar.short_description = "Фото сотрудника"
 
     def save_model(self, request, obj, form, change):
         # Automatically populate fields based on associated User

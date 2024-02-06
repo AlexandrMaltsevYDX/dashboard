@@ -12,6 +12,7 @@ from apps.reobjects.models.attributes import (
     EngineeringServices,
     VillageFences,
     ObjectDescription,
+    Coordinates,
 )
 
 
@@ -134,3 +135,13 @@ class WindowsOrientation(WindowsOrientation):
         proxy = True
         verbose_name = "Ориентация окон"
         verbose_name_plural = "Ориентация окон"
+
+
+class Coordinates(Coordinates):
+    def __str__(self):
+        return f"{self.yandex_latitude}, {self.yandex_longitude}"
+
+    class Meta:
+        proxy = True
+        verbose_name = "Координаты"
+        verbose_name_plural = "Координаты"

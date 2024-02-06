@@ -7,16 +7,53 @@ from .user import User
 
 
 class EmployeeProfileModel(TimeStampedModel, BaseModel):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=255, unique=True)
-    first_name = models.CharField(max_length=255, blank=True)
-    last_name = models.CharField(max_length=255, blank=True)
-    position = models.CharField(max_length=255, blank=True)
-    work_email = models.CharField(max_length=255, blank=True)
-    phone_number = models.CharField(max_length=255, blank=True)
-    telegram_link = models.CharField(max_length=255, blank=True)
-    whatsapp_link = models.CharField(max_length=255, blank=True)
-    description = models.TextField(blank=True)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+    )
+    username = models.CharField(
+        max_length=255,
+        unique=True,
+    )
+    first_name = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Имя",
+    )
+    last_name = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Фамилия",
+    )
+    position = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Должность",
+    )
+    work_email = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Рабочий Email",
+    )
+    phone_number = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Номе телефона",
+    )
+    telegram_link = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Telegram",
+    )
+    whatsapp_link = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Whatsapp",
+    )
+    description = models.TextField(
+        blank=True,
+        verbose_name="Описание",
+    )
 
     def save(self, *args, **kwargs):
         self.username = self.user.username

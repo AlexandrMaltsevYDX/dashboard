@@ -7,13 +7,15 @@ from .models import ReObjectProxy, ReObjectImageProxy, ReObjectEngineeringServic
 class ReObjectImageProxyInline(admin.TabularInline):
     model = ReObjectImageProxy
     extra = 1
-    fields = ("image", "uuid")
-    exclude = ("uuid",)
+    # fields = ("image", "uuid")
+    # exclude = ("uuid",)
 
 
-class ReObjectEngineeringServicesProxyInline(admin.StackedInline):
+class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
     model = ReObjectEngineeringServicesProxy
     extra = 1
+    # fields = ("engineering_service", "uuid")
+    # exclude = ("uuid",)
 
 
 @admin.register(ReObjectProxy)
@@ -22,6 +24,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
     list_display = [
         "photos_main",
         "id",
+        "name",
         "category",
         "type_house",
         "number_of_storeys",
@@ -38,12 +41,13 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "fencing",
         "foundation",
         "wall_material",
-        "buildings_on_site",
         "buildings_of_villages",
         "village_fences",
         "display_engineering_services",
         "object_description",
+        "coordinates",
     ]  # Customize as needed
+    # exclude = ("uuid",)
 
     readonly_fields = ("preview_photo", "photos_main", "display_engineering_services")
 
@@ -55,7 +59,9 @@ class ReObjectProxyModel(admin.ModelAdmin):
         photos = obj.photos.all()
         if len(photos) > 0:
             return format_html(
-                '<img src="{}" height="50"/>'.format(photos[0].image.url)
+                '<img src="{}" alt="{}" height="50"/>'.format(
+                    photos[0].image.url, photos[0].image.url
+                )
             )
         return "avatar"
 

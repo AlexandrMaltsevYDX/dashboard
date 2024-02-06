@@ -5,14 +5,28 @@ from django.db.models import (
     FloatField,
     TextField,
     CASCADE,
+    OneToOneField,
 )
+from mdeditor.fields import MDTextField
 from apps.core.models.base import BaseModel, TimeStampedModel
 from apps.reobjects import models
 
 
 # Create your models here.
 class ReObject(TimeStampedModel, BaseModel):
-    id = IntegerField(blank=True, null=True)
+    id = IntegerField(
+        blank=True,
+        null=True,
+    )
+
+    name = TextField(
+        max_length=255,
+        verbose_name="Название объекта",
+        help_text="Адрес",
+        blank=True,
+        null=True,
+    )
+
     category = ForeignKey(
         models.attributes.Category,
         on_delete=CASCADE,
@@ -143,14 +157,6 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Кирпич, Панель, Пеноблок",
     )
 
-    buildings_on_site = TextField(
-        max_length=1200,
-        verbose_name="Здания на участке",
-        help_text="Здания на участке",
-        null=True,
-        blank=True,
-    )
-
     buildings_of_villages = PositiveIntegerField(
         verbose_name="Количество домов в поселке",
         help_text="Количество домов в поселке",
@@ -167,13 +173,20 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Да, нет",
     )
 
-    object_description = ForeignKey(
-        models.attributes.ObjectDescription,
-        on_delete=CASCADE,
+    object_description = MDTextField(
         null=True,
         blank=True,
         verbose_name="Описание объекта",
-        help_text="Текст в markdown",
+        help_text="Текст с форматированием",
+    )
+
+    coordinates = OneToOneField(
+        models.attributes.Coordinates,
+        on_delete=CASCADE,
+        null=True,
+        blank=True,
+        verbose_name="Координаты объекта",
+        help_text="Широта, Долгота",
     )
 
     class Meta:

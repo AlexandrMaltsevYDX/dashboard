@@ -10,18 +10,6 @@ from .reobject_mtm_enjineeringservice import ReObjectEngineeringServicesModelSer
 
 
 class ReObjectModelSerializer(ModelSerializer):
-    # category = serializers.attributes.CategoryModelSerializer()
-    # type_house = serializers.attributes.TypeHouseModelSerializer()
-    # windows_orientation = serializers.attributes.WindowsOrientationModelSerializer()
-    # ownership = serializers.attributes.OwnershipModelSerializer()
-    # land_category = serializers.attributes.LandCategoryModelSerializer()
-    # relief_area = serializers.attributes.ReliefAreaModelSerializer()
-    # fencing = serializers.attributes.FencingModelSerializer()
-    # foundation = serializers.attributes.FoundationModelSerializer()
-    # wall_material = serializers.attributes.WallMaterialModelSerializer()
-    # village_fences = serializers.attributes.VillageFencesModelSerializer()
-    # object_description = serializers.attributes.ObjectDescriptionModelSerializer()
-
     category = SlugRelatedField(
         many=False,
         read_only=True,
@@ -87,11 +75,16 @@ class ReObjectModelSerializer(ModelSerializer):
         read_only=True,
         source="re_objects",
     )
+    coordinates = serializers.attributes.CoordinatesModelSerializer(
+        many=False,
+        read_only=True,
+    )
 
     class Meta:
         model = models.objects_re.ReObject
         fields = [
             "id",
+            "name",
             "category",
             "type_house",
             "number_of_storeys",
@@ -108,11 +101,11 @@ class ReObjectModelSerializer(ModelSerializer):
             "fencing",
             "foundation",
             "wall_material",
-            "buildings_on_site",
             "buildings_of_villages",
             "village_fences",
             "object_description",
             "photos",
             "images",
             "services",
+            "coordinates",
         ]

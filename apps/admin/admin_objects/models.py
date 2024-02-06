@@ -8,7 +8,7 @@ from apps.reobjects.models.objects_re import (
 # Create your models here.
 class ReObjectProxy(ReObject):
     def __str__(self):
-        return "ReObjectEngineeringServicesProxy"
+        return f"{self.uuid}"
 
     class Meta:
         proxy = True

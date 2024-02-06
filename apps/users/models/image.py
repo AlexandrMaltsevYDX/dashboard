@@ -17,21 +17,21 @@ class EmployeeProfileAvatarModel(BaseImageModel):
         return str(self.uuid)
 
     class Meta:
-        verbose_name = "Аватар Сотрудника"
-        verbose_name_plural = "Аватары Сотрудников"
+        verbose_name = "Фото Сотрудника"
+        verbose_name_plural = "Фото Сотрудников"
 
 
-class ReObjectImageModel(BaseImageModel):
-    re_object = models.ForeignKey(
-        ReObjectModel,
-        related_name="reobject_images",
-        on_delete=models.CASCADE,
-    )
-    image = models.FileField(upload_to="avatars/")
-
-    def __str__(self):
-        return str(self.uuid)
-
-    class Meta:
-        verbose_name = "Картинка Объекта недвижимости"
-        verbose_name_plural = "Картинки Объектов недвижимости"
+# class ReObjectImageModel(BaseImageModel):
+#     re_object = models.ForeignKey(
+#         ReObjectModel,
+#         related_name="reobject_images",
+#         on_delete=models.CASCADE,
+#     )
+#     image = models.FileField(upload_to="avatars/")
+#
+#     def __str__(self):
+#         return str(self.uuid)
+#
+#     class Meta:
+#         verbose_name = "Картинка Объекта недвижимости"
+#         verbose_name_plural = "Картинки Объектов недвижимости"

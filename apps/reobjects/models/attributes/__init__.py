@@ -10,7 +10,7 @@ from .wall_material import WallMaterial
 from .engineering_services import EngineeringServices
 from .village_fences import VillageFences
 from .object_description import ObjectDescription
-
+from .coordinates import Coordinates
 
 __all__ = [
     "Category",
@@ -25,4 +25,5 @@ __all__ = [
     "EngineeringServices",
     "VillageFences",
     "ObjectDescription",
+    "Coordinates",
 ]

@@ -62,3 +62,8 @@ class VillageFencesAdmin(admin.ModelAdmin):
 @admin.register(models.ObjectDescription)
 class ObjectDescriptionAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(models.Coordinates)
+class CoordinatesAdmin(admin.ModelAdmin):
+    pass

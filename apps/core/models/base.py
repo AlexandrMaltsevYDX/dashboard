@@ -12,7 +12,11 @@ class TimeStampedModel(models.Model):
 
 
 class BaseModel(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    uuid = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
 
     class Meta:
         abstract = True
@@ -24,7 +28,7 @@ class BaseImageModel(BaseModel):
     # def get_image_path() -> str:
     #     return f'images/'
 
-    image = models.FileField(upload_to='images/')
+    image = models.FileField(upload_to="images/")
 
     class Meta:
         abstract = True

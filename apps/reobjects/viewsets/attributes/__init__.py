@@ -10,6 +10,7 @@ from .village_fences import VillageFencesModelViewSet
 from .wall_material import WallMaterialModelViewSet
 from .windows_orientation import WindowsOrientationModelViewSet
 from .object_description import ObjectDescriptionModelViewSet
+from .coordinates import CoordinatesModelViewSet
 
 __all__ = [
     "CategoryModelViewSet",
@@ -24,4 +25,5 @@ __all__ = [
     "WallMaterialModelViewSet",
     "WindowsOrientationModelViewSet",
     "ObjectDescriptionModelViewSet",
+    "CoordinatesModelViewSet",
 ]
