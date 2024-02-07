@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "apps.reobjects",
     "apps.blog",
     "apps.reviews",
+    "apps.applications",
     # admin
     "apps.admin",
     "apps.admin.admin_blog",
@@ -74,6 +75,7 @@ INSTALLED_APPS = [
     "apps.admin.admin_attributes",
     "apps.admin.admin_objects",
     "apps.admin.admin_review",
+    "apps.admin.admin_applications",
 ]
 
 MIDDLEWARE = [
