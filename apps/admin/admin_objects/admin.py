@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from .models import ReObjectProxy, ReObjectImageProxy, ReObjectEngineeringServicesProxy
+from django.templatetags.static import static
 
 
 class ReObjectImageProxyInline(admin.TabularInline):
@@ -71,9 +72,9 @@ class ReObjectProxyModel(admin.ModelAdmin):
         )
         return ", ".join(engineering_services)
 
-    photos.short_description = "Photos"
-    photos_main.short_description = "Photo"
-    display_engineering_services.short_description = "Engineering Services"
+    photos.short_description = "Фотографии объекта"
+    photos_main.short_description = "Первое фото"
+    display_engineering_services.short_description = "Инженерные коммуникации"
 
     def preview_photo(self, obj):
         """for local"""
@@ -86,7 +87,10 @@ class ReObjectProxyModel(admin.ModelAdmin):
             )
         )
 
-    preview_photo.short_description = "Photo Preview"
+    preview_photo.short_description = "Фотографии объекта"
+
+    class Media:
+        js = [static("test.js")]
 
 
 # Register your models here.

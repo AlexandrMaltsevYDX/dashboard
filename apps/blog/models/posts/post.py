@@ -18,6 +18,7 @@ class Post(BaseModel):
         null=True,
         blank=True,
     )
+
     body = MDTextField(
         null=True,
         blank=True,

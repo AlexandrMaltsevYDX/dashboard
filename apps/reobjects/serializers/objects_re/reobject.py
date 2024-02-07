@@ -60,11 +60,6 @@ class ReObjectModelSerializer(ModelSerializer):
         read_only=True,
         slug_field="value",
     )
-    object_description = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
     photos = ReObjectImageModelSerializer(
         many=True,
         read_only=True,

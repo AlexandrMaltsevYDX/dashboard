@@ -9,6 +9,7 @@ api_urlpatterns = [
     path("api/v1/", include("apps.users.urls")),
     path("api/v1/", include("apps.reobjects.urls")),
     path("api/v1/", include("apps.blog.urls")),
+    path("api/v1/", include("apps.reviews.urls")),
 ]
 
 

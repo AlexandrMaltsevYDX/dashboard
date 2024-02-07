@@ -18,7 +18,7 @@ class ReObjectProxy(ReObject):
 
 class ReObjectImageProxy(ReObjectImage):
     def __str__(self):
-        return "ReObjectImage"
+        return f"{self.uuid}"
 
     class Meta:
         proxy = True

@@ -20,6 +20,10 @@ class PostModelSerializer(ModelSerializer):
         read_only=True,
         source="posts",
     )
+    author = SlugRelatedField(
+        slug_field="username",
+        read_only=True,
+    )
 
     class Meta:
         model = models.posts.Post

@@ -28,6 +28,9 @@ class PostAdmin(admin.ModelAdmin):
         "tags_display",
     ]
     list_display = ("name", "photo", "tags_display")
+    list_filter = [
+        "author",
+    ]
 
     def photo(self, obj):
         photos = obj.postimages.all()

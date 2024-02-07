@@ -30,24 +30,24 @@ class EmployeeProfileProxyModel(admin.ModelAdmin):
     ]  # Customize as needed
 
     readonly_fields = ("preview_avatar",)
-    fieldsets = [
-        (
-            "Profile Details",
-            {
-                "fields": [
-                    "first_name",
-                    "last_name",
-                    "position",
-                    "work_email",
-                    "phone_number",
-                    "telegram_link",
-                    "whatsapp_link",
-                    "description",
-                    "preview_avatar",
-                ]
-            },
-        ),
-    ]
+    # fieldsets = [
+    #     (
+    #         "Profile Details",
+    #         {
+    #             "fields": [
+    #                 "uuid",
+    #                 "last_name",
+    #                 "position",
+    #                 "work_email",
+    #                 "phone_number",
+    #                 "telegram_link",
+    #                 "whatsapp_link",
+    #                 "description",
+    #                 "preview_avatar",
+    #             ]
+    #         },
+    #     ),
+    # ]
 
     def avatars(self, obj):
         avatars = obj.avatars.all().values_list("image", flat=True)

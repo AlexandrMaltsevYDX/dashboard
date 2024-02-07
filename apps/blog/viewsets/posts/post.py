@@ -19,6 +19,9 @@ class PostModelViewSet(
 ):
     queryset = models.posts.Post.objects.all()
     serializer_class = serializers.posts.PostModelSerializer
+    filterset_fields = [
+        "author__username",
+    ]
     http_method_names = [
         "post",
         "delete",

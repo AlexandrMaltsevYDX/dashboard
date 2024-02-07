@@ -1,0 +1,20 @@
+from django.db import models
+
+from apps.core.models.base import BaseModel, BaseImageModel
+from .review import Review
+
+
+class ReviewImageModel(BaseImageModel):
+    review = models.ForeignKey(
+        Review,
+        related_name="reviewimages",
+        on_delete=models.CASCADE,
+    )
+    image = models.FileField(upload_to="reviews/")
+
+    def __str__(self):
+        return str(self.uuid)
+
+    class Meta:
+        verbose_name = "Скрин или фото к ревью"
+        verbose_name_plural = "Скрин или фото к ревью"

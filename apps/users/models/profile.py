@@ -61,6 +61,13 @@ class EmployeeProfileModel(TimeStampedModel, BaseModel):
         self.last_name = self.user.last_name
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+    class Meta:
+        verbose_name = "Сотрудник"
+        verbose_name_plural = "Сотрудники"
+
 
 @receiver(post_save, sender=User)
 def create_or_update_employee_profile(sender, instance, created, **kwargs):
