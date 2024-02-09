@@ -73,7 +73,6 @@ INSTALLED_APPS = [
     "apps.admin.admin_blog",
     "apps.admin.admin_service",
     "apps.admin.admin_employees",
-    "apps.admin.admin_attributes",
     "apps.admin.admin_objects",
     "apps.admin.admin_village",
     "apps.admin.admin_review",
@@ -96,7 +95,7 @@ ROOT_URLCONF = "src.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

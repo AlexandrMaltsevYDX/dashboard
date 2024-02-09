@@ -1,0 +1,30 @@
+{% load i18n %}
+<style>
+       .toggle {
+           display: none;
+       }
+</style>
+<button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar"
+        aria-label="{% translate 'Toggle navigation' %}"></button>
+<nav class="sticky" id="nav-sidebar" aria-label="{% translate 'Sidebar' %}">
+    <input type="search" id="nav-filter"
+           placeholder="{% translate 'Start typing to filter…' %}"
+           aria-label="{% translate 'Filter navigation items' %}">
+    {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False %}
+</nav>
+<script>
+    const tables = document.querySelectorAll('.mytable');
+    for (let table of tables) {
+        table.addEventListener('click', printTest)
+    }
+
+    function printTest(e) {
+        if (e.target.tagName === "CAPTION") {
+            const table = e.target.parentNode
+            const rows = table.getElementsByTagName("tr")
+            for (let row of rows) {
+                row.classList.toggle("toggle");
+            }
+        }
+    }
+</script>
