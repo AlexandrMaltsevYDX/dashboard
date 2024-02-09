@@ -12,6 +12,9 @@ from .windows_orientation import WindowsOrientationModelSerializer
 from .object_description import ObjectDescriptionModelSerializer
 from .repair import RepairModelSerializer
 from .coordinates import CoordinatesModelSerializer
+from .balcony import BalconyModelSerializer
+from .driveways import DrivewaysModelSerializer
+from .area_of_measurement import AreaOfMeasurementModelSerializer
 
 __all__ = [
     "CategoryModelSerializer",
@@ -28,4 +31,7 @@ __all__ = [
     "ObjectDescriptionModelSerializer",
     "RepairModelSerializer",
     "CoordinatesModelSerializer",
+    "BalconyModelSerializer",
+    "DrivewaysModelSerializer",
+    "AreaOfMeasurementModelSerializer",
 ]

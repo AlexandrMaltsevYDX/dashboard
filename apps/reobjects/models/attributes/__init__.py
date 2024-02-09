@@ -12,6 +12,9 @@ from .village_fences import VillageFences
 from .object_description import ObjectDescription
 from .coordinates import Coordinates
 from .repair import Repair
+from .balcony import Balcony
+from .driveways import Driveways
+from .area_of_measurement import AreaOfMeasurement
 
 __all__ = [
     "Category",
@@ -28,4 +31,7 @@ __all__ = [
     "ObjectDescription",
     "Coordinates",
     "Repair",
+    "Balcony",
+    "Driveways",
+    "AreaOfMeasurement",
 ]

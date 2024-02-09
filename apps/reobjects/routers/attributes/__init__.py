@@ -62,3 +62,18 @@ router.register(
     prefix=r"repair",
     viewset=viewsets.attributes.RepairModelViewSet,
 )
+
+router.register(
+    prefix=r"balcony",
+    viewset=viewsets.attributes.BalconyModelViewSet,
+)
+
+router.register(
+    prefix=r"driveways",
+    viewset=viewsets.attributes.DrivewaysModelViewSet,
+)
+
+router.register(
+    prefix=r"measurement",
+    viewset=viewsets.attributes.AreaOfMeasurementModelViewSet,
+)

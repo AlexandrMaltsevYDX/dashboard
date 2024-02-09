@@ -5,6 +5,7 @@ from django.db.models import (
     FloatField,
     TextField,
     CASCADE,
+    RESTRICT,
     OneToOneField,
     PositiveBigIntegerField,
     DateField,
@@ -34,6 +35,15 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="введите дату",
         blank=True,
         null=True,
+    )
+
+    balcony = ForeignKey(
+        models.attributes.Balcony,
+        on_delete=CASCADE,
+        null=True,
+        blank=True,
+        verbose_name="Тип балкона/лоджии",
+        help_text="Выберите из списка, или создайте новое '+'",
     )
 
     wc = TextField(
@@ -136,6 +146,15 @@ class ReObject(TimeStampedModel, BaseModel):
         blank=True,
         verbose_name="Категория земель",
         help_text="Коммерческая",
+    )
+
+    land_area_measurement = ForeignKey(
+        models.attributes.AreaOfMeasurement,
+        on_delete=CASCADE,
+        null=True,
+        blank=True,
+        verbose_name="Единицы измерения площади участка",
+        help_text="Выберите из списка, или создайте новое '+'",
     )
 
     land_area = FloatField(
@@ -241,6 +260,15 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="скопируйте ссылку iframe из браузера и вставьте в это поле",
         blank=True,
         null=True,
+    )
+
+    driveways = ForeignKey(
+        models.attributes.Driveways,
+        on_delete=RESTRICT,
+        null=True,
+        blank=True,
+        verbose_name="Подъездные пути",
+        help_text="Выберите из списка, или создайте новое '+'",
     )
 
     class Meta:

@@ -79,6 +79,23 @@ class ReObjectModelSerializer(ModelSerializer):
         many=False,
         read_only=True,
     )
+    balcony = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
+
+    driveways = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
+
+    land_area_measurement = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
 
     class Meta:
         model = models.objects_re.ReObject
@@ -96,6 +113,7 @@ class ReObjectModelSerializer(ModelSerializer):
             "windows_orientation",
             "ownership",
             "land_category",
+            "land_area_measurement",
             "land_area",
             "relief_area",
             "fencing",
@@ -108,4 +126,6 @@ class ReObjectModelSerializer(ModelSerializer):
             "services",
             "coordinates",
             "repair",
+            "balcony",
+            "driveways",
         ]

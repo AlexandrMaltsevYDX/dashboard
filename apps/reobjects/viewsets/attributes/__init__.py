@@ -12,6 +12,9 @@ from .windows_orientation import WindowsOrientationModelViewSet
 from .object_description import ObjectDescriptionModelViewSet
 from .coordinates import CoordinatesModelViewSet
 from .repair import RepairModelViewSet
+from .balcony import BalconyModelViewSet
+from .driveways import DrivewaysModelViewSet
+from .land_area_measurement import AreaOfMeasurementModelViewSet
 
 __all__ = [
     "CategoryModelViewSet",
@@ -28,4 +31,7 @@ __all__ = [
     "ObjectDescriptionModelViewSet",
     "CoordinatesModelViewSet",
     "RepairModelViewSet",
+    "BalconyModelViewSet",
+    "DrivewaysModelViewSet",
+    "AreaOfMeasurementModelViewSet",
 ]
