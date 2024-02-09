@@ -57,3 +57,8 @@ router.register(
     prefix=r"coordinates",
     viewset=viewsets.attributes.CoordinatesModelViewSet,
 )
+
+router.register(
+    prefix=r"repair",
+    viewset=viewsets.attributes.RepairModelViewSet,
+)

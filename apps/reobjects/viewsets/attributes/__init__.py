@@ -11,6 +11,7 @@ from .wall_material import WallMaterialModelViewSet
 from .windows_orientation import WindowsOrientationModelViewSet
 from .object_description import ObjectDescriptionModelViewSet
 from .coordinates import CoordinatesModelViewSet
+from .repair import RepairModelViewSet
 
 __all__ = [
     "CategoryModelViewSet",
@@ -26,4 +27,5 @@ __all__ = [
     "WindowsOrientationModelViewSet",
     "ObjectDescriptionModelViewSet",
     "CoordinatesModelViewSet",
+    "RepairModelViewSet",
 ]

@@ -20,9 +20,32 @@ class VillagePlanModelProxyInline(admin.TabularInline):
     # exclude = ("uuid",)
 
 
+class VillageEngineeringServicesProxyInline(admin.TabularInline):
+    model = models.relationships.VillageEngineeringServices
+    extra = 1
+    readonly_fields = ("tag", "text")
+
+    # exclude = ("uuid",)
+    @admin.display(description="tag")
+    def tag(self, obj):
+        # q = self.model.engineering_service
+        q = obj.engineering_service.tag
+        return f"{q}"
+
+    @admin.display(description="text")
+    def text(self, obj):
+        # q = self.model.engineering_service
+        q = obj.engineering_service.text
+        return f"{q}"
+
+
 @admin.register(VillageProxy)
 class VillageProxyModel(admin.ModelAdmin):
-    inlines = [VillageImageModelProxyInline, VillagePlanModelProxyInline]
+    inlines = [
+        VillageImageModelProxyInline,
+        VillagePlanModelProxyInline,
+        VillageEngineeringServicesProxyInline,
+    ]
     list_display = [
         "id",
         "name",
@@ -33,6 +56,7 @@ class VillageProxyModel(admin.ModelAdmin):
     readonly_fields = (
         "images_village",
         "plans_village",
+        "display_engineering_services",
     )
 
     def first_image(self, obj):
@@ -77,7 +101,14 @@ class VillageProxyModel(admin.ModelAdmin):
             )
         )
 
+    def display_engineering_services(self, obj):
+        village_engineering_services = obj.villages.all().values_list(
+            "engineering_service__name", flat=True
+        )
+        return ", ".join(village_engineering_services)
+
     first_image.short_description = "Первая фотография объекта"
     images_village.short_description = "Фото объектов"
     first_plan.short_description = "Первый план объекта"
     plans_village.short_description = "Планы объектов"
+    display_engineering_services.short_description = "Инженерные коммуникации"

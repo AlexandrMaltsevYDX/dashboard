@@ -6,6 +6,8 @@ from django.db.models import (
     TextField,
     CASCADE,
     OneToOneField,
+    PositiveBigIntegerField,
+    DateField,
 )
 from mdeditor.fields import MDTextField
 from apps.core.models.base import BaseModel, TimeStampedModel
@@ -23,6 +25,21 @@ class ReObject(TimeStampedModel, BaseModel):
         max_length=255,
         verbose_name="Название объекта",
         help_text="Адрес",
+        blank=True,
+        null=True,
+    )
+
+    date_sale = DateField(
+        verbose_name="Дата продажи",
+        help_text="введите дату",
+        blank=True,
+        null=True,
+    )
+
+    wc = TextField(
+        max_length=255,
+        verbose_name="Санузел",
+        help_text="Введите текст",
         blank=True,
         null=True,
     )
@@ -71,6 +88,13 @@ class ReObject(TimeStampedModel, BaseModel):
         blank=True,
         verbose_name="Общая площадь помещений",
         help_text="Общая площадь помещений",
+    )
+
+    ceiling_height = FloatField(
+        null=True,
+        blank=True,
+        verbose_name="Высота потолков",
+        help_text="Ведите цифры в метрах например '3.2'",
     )
 
     living_area = FloatField(
@@ -130,6 +154,29 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Горы, Холмы",
     )
 
+    distance_CAD = FloatField(
+        null=True,
+        blank=True,
+        verbose_name="Расстояние до кад",
+        help_text="введите знaчение в КМ, например '1.2' ",
+    )
+
+    price = PositiveBigIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="Цена",
+        help_text="введите знaчение в РУБ, например '1000000' ",
+    )
+
+    repair = ForeignKey(
+        models.attributes.Repair,
+        on_delete=CASCADE,
+        null=True,
+        blank=True,
+        verbose_name="Ремонт",
+        help_text="Выберите из списка, или создайте новое '+'",
+    )
+
     fencing = ForeignKey(
         models.attributes.Fencing,
         on_delete=CASCADE,
@@ -180,6 +227,20 @@ class ReObject(TimeStampedModel, BaseModel):
         blank=True,
         verbose_name="Координаты объекта",
         help_text="Широта, Долгота",
+    )
+
+    you_tube_link = TextField(
+        verbose_name="Ссылка на YouTube",
+        help_text="скопируйте ссылку из браузера и вставьте в это поле",
+        blank=True,
+        null=True,
+    )
+
+    yandex_map_link = TextField(
+        verbose_name="Ссылка на YandexMap",
+        help_text="скопируйте ссылку iframe из браузера и вставьте в это поле",
+        blank=True,
+        null=True,
     )
 
     class Meta:

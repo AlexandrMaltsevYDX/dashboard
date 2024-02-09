@@ -10,6 +10,7 @@ from .village_fences import VillageFencesModelSerializer
 from .wall_material import WallMaterialModelSerializer
 from .windows_orientation import WindowsOrientationModelSerializer
 from .object_description import ObjectDescriptionModelSerializer
+from .repair import RepairModelSerializer
 from .coordinates import CoordinatesModelSerializer
 
 __all__ = [
@@ -25,5 +26,6 @@ __all__ = [
     "WallMaterialModelSerializer",
     "WindowsOrientationModelSerializer",
     "ObjectDescriptionModelSerializer",
+    "RepairModelSerializer",
     "CoordinatesModelSerializer",
 ]

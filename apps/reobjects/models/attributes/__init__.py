@@ -11,6 +11,7 @@ from .engineering_services import EngineeringServices
 from .village_fences import VillageFences
 from .object_description import ObjectDescription
 from .coordinates import Coordinates
+from .repair import Repair
 
 __all__ = [
     "Category",
@@ -26,4 +27,5 @@ __all__ = [
     "VillageFences",
     "ObjectDescription",
     "Coordinates",
+    "Repair",
 ]

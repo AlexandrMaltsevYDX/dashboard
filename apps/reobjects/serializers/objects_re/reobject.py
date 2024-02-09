@@ -20,6 +20,11 @@ class ReObjectModelSerializer(ModelSerializer):
         read_only=True,
         slug_field="name",
     )
+    repair = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
     windows_orientation = SlugRelatedField(
         many=False,
         read_only=True,
@@ -102,4 +107,5 @@ class ReObjectModelSerializer(ModelSerializer):
             "images",
             "services",
             "coordinates",
+            "repair",
         ]
