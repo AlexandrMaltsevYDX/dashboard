@@ -15,8 +15,20 @@ class ReObjectImageProxyInline(admin.TabularInline):
 class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
     model = ReObjectEngineeringServicesProxy
     extra = 1
-    # fields = ("engineering_service", "uuid")
+    readonly_fields = ("tag", "text")
+
     # exclude = ("uuid",)
+    @admin.display(description="tag")
+    def tag(self, obj):
+        # q = self.model.engineering_service
+        q = obj.engineering_service.tag
+        return f"{q}"
+
+    @admin.display(description="text")
+    def text(self, obj):
+        # q = self.model.engineering_service
+        q = obj.engineering_service.text
+        return f"{q}"
 
 
 @admin.register(ReObjectProxy)
@@ -42,7 +54,6 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "fencing",
         "foundation",
         "wall_material",
-        "buildings_of_villages",
         "village_fences",
         "display_engineering_services",
         "object_description",
@@ -68,7 +79,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
 
     def display_engineering_services(self, obj):
         engineering_services = obj.re_objects.all().values_list(
-            "engineering_service__value", flat=True
+            "engineering_service__name", flat=True
         )
         return ", ".join(engineering_services)
 

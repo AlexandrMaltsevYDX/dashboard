@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "apps",
     "apps.users",
     "apps.reobjects",
+    "apps.village",
     "apps.blog",
     "apps.reviews",
     "apps.applications",
@@ -74,6 +75,7 @@ INSTALLED_APPS = [
     "apps.admin.admin_employees",
     "apps.admin.admin_attributes",
     "apps.admin.admin_objects",
+    "apps.admin.admin_village",
     "apps.admin.admin_review",
     "apps.admin.admin_applications",
 ]

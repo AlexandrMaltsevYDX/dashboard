@@ -96,7 +96,6 @@ class ReObjectModelSerializer(ModelSerializer):
             "fencing",
             "foundation",
             "wall_material",
-            "buildings_of_villages",
             "village_fences",
             "object_description",
             "photos",

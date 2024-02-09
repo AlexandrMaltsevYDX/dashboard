@@ -157,13 +157,6 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Кирпич, Панель, Пеноблок",
     )
 
-    buildings_of_villages = PositiveIntegerField(
-        verbose_name="Количество домов в поселке",
-        help_text="Количество домов в поселке",
-        null=True,
-        blank=True,
-    )
-
     village_fences = ForeignKey(
         models.attributes.VillageFences,
         on_delete=CASCADE,
