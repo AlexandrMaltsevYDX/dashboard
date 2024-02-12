@@ -26,7 +26,7 @@ class ReviewModelSerializer(ModelSerializer):
         fields = [
             "text",
             "author_name",
-            "link_to_src",
+            "created_at",
             "images",
             "photos",
         ]
