@@ -77,3 +77,13 @@ router.register(
     prefix=r"measurement",
     viewset=viewsets.attributes.AreaOfMeasurementModelViewSet,
 )
+
+router.register(
+    prefix=r"window_material",
+    viewset=viewsets.attributes.WindowMaterialModelViewSet,
+)
+
+router.register(
+    prefix=r"sales_method",
+    viewset=viewsets.attributes.SalesMethodModelViewSet,
+)

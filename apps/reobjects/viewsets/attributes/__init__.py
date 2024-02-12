@@ -15,6 +15,8 @@ from .repair import RepairModelViewSet
 from .balcony import BalconyModelViewSet
 from .driveways import DrivewaysModelViewSet
 from .land_area_measurement import AreaOfMeasurementModelViewSet
+from .window_material import WindowMaterialModelViewSet
+from .sales_method import SalesMethodModelViewSet
 
 __all__ = [
     "CategoryModelViewSet",
@@ -34,4 +36,5 @@ __all__ = [
     "BalconyModelViewSet",
     "DrivewaysModelViewSet",
     "AreaOfMeasurementModelViewSet",
+    "SalesMethodModelViewSet",
 ]

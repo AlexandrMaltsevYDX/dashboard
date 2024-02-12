@@ -9,6 +9,7 @@ from django.db.models import (
     OneToOneField,
     PositiveBigIntegerField,
     DateField,
+    BooleanField,
 )
 from mdeditor.fields import MDTextField
 from apps.core.models.base import BaseModel, TimeStampedModel
@@ -20,6 +21,13 @@ class ReObject(TimeStampedModel, BaseModel):
     id = IntegerField(
         blank=True,
         null=True,
+        verbose_name="ID объекта",
+    )
+
+    visible_on_site = BooleanField(
+        blank=True,
+        null=True,
+        verbose_name="Отображать на сайте",
     )
 
     name = TextField(
@@ -269,6 +277,24 @@ class ReObject(TimeStampedModel, BaseModel):
         blank=True,
         verbose_name="Подъездные пути",
         help_text="Выберите из списка, или создайте новое '+'",
+    )
+
+    window_material = ForeignKey(
+        models.attributes.WindowMaterial,
+        on_delete=RESTRICT,
+        null=True,
+        blank=True,
+        verbose_name="Материал окон",
+        help_text="Выберете значение из списка, или создайте новое '+'",
+    )
+
+    sales_method = ForeignKey(
+        models.attributes.SalesMethod,
+        on_delete=RESTRICT,
+        null=True,
+        blank=True,
+        verbose_name="Способ продажи",
+        help_text="Выберете значение из списка, или создайте новое '+'",
     )
 
     class Meta:

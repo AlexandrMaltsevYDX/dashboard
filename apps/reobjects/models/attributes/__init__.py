@@ -15,6 +15,8 @@ from .repair import Repair
 from .balcony import Balcony
 from .driveways import Driveways
 from .area_of_measurement import AreaOfMeasurement
+from .window_material import WindowMaterial
+from .sales_method import SalesMethod
 
 __all__ = [
     "Category",
@@ -34,4 +36,6 @@ __all__ = [
     "Balcony",
     "Driveways",
     "AreaOfMeasurement",
+    "WindowMaterial",
+    "SalesMethod",
 ]

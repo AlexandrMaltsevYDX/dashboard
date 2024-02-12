@@ -15,6 +15,8 @@ from .coordinates import CoordinatesModelSerializer
 from .balcony import BalconyModelSerializer
 from .driveways import DrivewaysModelSerializer
 from .area_of_measurement import AreaOfMeasurementModelSerializer
+from .window_material import WindowMaterialModelSerializer
+from .sales_method import SalesMethodModelSerializer
 
 __all__ = [
     "CategoryModelSerializer",
@@ -34,4 +36,6 @@ __all__ = [
     "BalconyModelSerializer",
     "DrivewaysModelSerializer",
     "AreaOfMeasurementModelSerializer",
+    "WindowMaterialModelSerializer",
+    "SalesMethodModelSerializer",
 ]

@@ -8,6 +8,7 @@ from django.db.models import (
     CASCADE,
     RESTRICT,
     OneToOneField,
+    BooleanField,
 )
 
 from mdeditor.fields import MDTextField
@@ -20,6 +21,13 @@ class Village(TimeStampedModel, BaseModel):
     id = IntegerField(
         blank=True,
         null=True,
+        verbose_name="ID посёлка",
+    )
+
+    visible_on_site = BooleanField(
+        blank=True,
+        null=True,
+        verbose_name="Отображать на сайте",
     )
 
     name = TextField(
@@ -124,6 +132,13 @@ class Village(TimeStampedModel, BaseModel):
         blank=True,
         verbose_name="Описание объекта",
         help_text="Текст с форматированием",
+    )
+
+    buildings_on_plot = TextField(
+        verbose_name="Строения на участке",
+        help_text="Опишите строения на участке",
+        blank=True,
+        null=True,
     )
 
     you_tube_link = TextField(
