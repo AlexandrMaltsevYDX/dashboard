@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from apps.users.models import EmployeeProfileModel, EmployeeProfileAvatarModel
+from .jobtitle import JobTitleModelSerializer
 
 
 class EmployeeProfileAvatarModelSerializer(serializers.ModelSerializer):
@@ -13,6 +14,10 @@ class EmployeeProfileModelSerializer(serializers.ModelSerializer):
         child=serializers.FileField(required=False), write_only=True
     )
     avatars = EmployeeProfileAvatarModelSerializer(many=True, read_only=True)
+    job_title = serializers.SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
 
     class Meta:
         model = EmployeeProfileModel
@@ -20,7 +25,7 @@ class EmployeeProfileModelSerializer(serializers.ModelSerializer):
             "uuid",
             "first_name",
             "last_name",
-            "position",
+            "job_title",
             "work_email",
             "phone_number",
             "telegram_link",
