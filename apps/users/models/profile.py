@@ -4,6 +4,7 @@ from django.dispatch import receiver
 
 from apps.core.models.base import BaseModel, TimeStampedModel
 from .user import User
+from .jobtitle import JobTitle
 
 
 class EmployeeProfileModel(TimeStampedModel, BaseModel):
@@ -25,11 +26,7 @@ class EmployeeProfileModel(TimeStampedModel, BaseModel):
         blank=True,
         verbose_name="Фамилия",
     )
-    position = models.CharField(
-        max_length=255,
-        blank=True,
-        verbose_name="Должность",
-    )
+
     work_email = models.CharField(
         max_length=255,
         blank=True,
@@ -53,6 +50,14 @@ class EmployeeProfileModel(TimeStampedModel, BaseModel):
     description = models.TextField(
         blank=True,
         verbose_name="Описание",
+    )
+
+    job_title = models.ForeignKey(
+        JobTitle,
+        on_delete=models.RESTRICT,
+        blank=True,
+        null=True,
+        verbose_name="Должность",
     )
 
     def save(self, *args, **kwargs):

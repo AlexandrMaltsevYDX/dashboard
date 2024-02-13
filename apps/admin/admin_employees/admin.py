@@ -21,7 +21,7 @@ class EmployeeProfileProxyModel(admin.ModelAdmin):
         # "avatars",
         "first_name",
         "last_name",
-        "position",
+        "job_title",
         "work_email",
         "phone_number",
         "telegram_link",
