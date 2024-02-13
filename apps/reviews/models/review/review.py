@@ -1,4 +1,4 @@
-from django.db.models import CharField
+from django.db.models import CharField, DateField
 from mdeditor.fields import MDTextField
 from apps.core.models.base import BaseModel, TimeStampedModel
 
@@ -22,6 +22,13 @@ class Review(TimeStampedModel, BaseModel):
         null=True,
         verbose_name="Ccылка на источник",
         help_text="Скопируйте ссылку отзыва и поместите в это поле",
+    )
+
+    date_sale = DateField(
+        verbose_name="Дата публикации",
+        help_text="Выберите дату публикации",
+        blank=True,
+        null=True,
     )
 
     class Meta:

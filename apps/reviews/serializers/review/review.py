@@ -26,9 +26,10 @@ class ReviewModelSerializer(ModelSerializer):
         fields = [
             "text",
             "author_name",
-            "created_at",
+            "date_sale",
             "images",
             "photos",
+            "link_to_src",
         ]
 
     def save(self, *args, **kwargs):

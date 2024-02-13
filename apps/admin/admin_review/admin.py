@@ -26,7 +26,7 @@ class ReviewAdmin(admin.ModelAdmin):
         "link_to_src",
     )
     list_filter = [
-        "created_at",
+        "date_sale",
     ]
 
     def photo(self, obj):
