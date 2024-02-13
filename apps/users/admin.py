@@ -7,8 +7,10 @@ from django.conf import settings
 from apps.users.models import (
     User,
     Group,
+    JobTitle,
 )
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Group, GroupAdmin)
 admin.site.unregister(BaseGroup)
+admin.site.register(JobTitle)
