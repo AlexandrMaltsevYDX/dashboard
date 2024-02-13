@@ -8,6 +8,7 @@ from apps.reobjects import models, serializers
 from .image import ReObjectImageModelSerializer
 from .plan_image import ReObjectPlanModelSerializer
 from .reobject_mtm_enjineeringservice import ReObjectEngineeringServicesModelSerializer
+from .reobject_mtm_employee import ReObjectEmployeeModelSerializer
 
 
 class ReObjectModelSerializer(ModelSerializer):
@@ -128,6 +129,13 @@ class ReObjectModelSerializer(ModelSerializer):
         source="re_objects",
     )
 
+    # agents
+    agents = ReObjectEmployeeModelSerializer(
+        many=True,
+        read_only=True,
+        source="reobjectemployees",
+    )
+
     class Meta:
         model = models.objects_re.ReObject
         fields = [
@@ -163,4 +171,5 @@ class ReObjectModelSerializer(ModelSerializer):
             "plans_images",
             "window_material",
             "sales_method",
+            "agents",
         ]
