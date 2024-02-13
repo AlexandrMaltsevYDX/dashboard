@@ -20,6 +20,12 @@ class ReObjectImageProxyInline(admin.TabularInline):
     # exclude = ("uuid",)
 
 
+class ReObjectEmploeeProxyInline(admin.TabularInline):
+    model = models.objects_re.ReObjectEmployee
+    extra = 1
+    # readonly_fields = ("tag", "text")
+
+
 class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
     model = ReObjectEngineeringServicesProxy
     extra = 1
@@ -45,6 +51,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         ReObjectImageProxyInline,
         ReObjectPlanModelInline,
         ReObjectEngineeringServicesProxyInline,
+        ReObjectEmploeeProxyInline,
     ]
     list_display = [
         "photos_main",
@@ -73,13 +80,29 @@ class ReObjectProxyModel(admin.ModelAdmin):
     ]  # Customize as needed
     # exclude = ("uuid",)
 
-    readonly_fields = ("photo_images", "plans_images", "display_engineering_services")
+    readonly_fields = (
+        "photo_images",
+        "plans_images",
+        "display_engineering_services",
+        "display_agents",
+    )
 
     def display_engineering_services(self, obj):
         engineering_services = obj.re_objects.all().values_list(
             "engineering_service__name", flat=True
         )
         return ", ".join(engineering_services)
+
+    def display_agents(self, obj):
+        # agents = obj.reobjectemployees.all().values_list(
+        #     "employee__username", flat=True
+        # )
+        agents = [
+            f"{i.employee.first_name} {i.employee.last_name}"
+            for i in obj.reobjectemployees.all()
+        ]
+        print(agents)
+        return ", ".join(agents)
 
     def photos_main(self, obj):
         photos = obj.photos.all()
@@ -116,6 +139,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
     plans_images.short_description = "Планы объекта"
     photos_main.short_description = "Первое фото"
     display_engineering_services.short_description = "Инженерные коммуникации"
+    display_agents.short_description = "Агенты"
 
     class Media:
         js = [static("test.js")]
