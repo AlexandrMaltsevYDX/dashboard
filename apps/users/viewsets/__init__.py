@@ -1,9 +1,9 @@
 from .user import UserViewSet
-from .profile import EmployeeProfileListViewset
+from .profile import EmployeeProfileViewset
 from .jobtitle import JobTitleModelViewSet
 
 __all__ = [
     "UserViewSet",
-    "EmployeeProfileListViewset",
+    "EmployeeProfileViewset",
     "JobTitleModelViewSet",
 ]

@@ -4,14 +4,14 @@ from apps.users.models import EmployeeProfileModel, EmployeeProfileAvatarModel
 from apps.users.serializers import EmployeeProfileModelSerializer
 
 
-#
-class EmployeeProfileListViewset(
+class EmployeeProfileViewset(
     mixins.ListModelMixin,
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = EmployeeProfileModel.objects.all().prefetch_related("avatars")
+    queryset = EmployeeProfileModel.objects.all()
     serializer_class = EmployeeProfileModelSerializer
     http_method_names = [
         "put",
