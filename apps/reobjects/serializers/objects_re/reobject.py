@@ -17,71 +17,23 @@ class ReObjectModelSerializer(ModelSerializer):
         read_only=True,
         slug_field="name",
     )
-    type_house = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="name",
-    )
-    repair = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="name",
-    )
-    windows_orientation = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
-    ownership = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
+
     land_category = SlugRelatedField(
         many=False,
         read_only=True,
         slug_field="value",
     )
-    relief_area = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
-    fencing = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
-    foundation = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
-    wall_material = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="value",
-    )
-    village_fences = SlugRelatedField(
+
+    approve_usage = SlugRelatedField(
         many=False,
         read_only=True,
         slug_field="value",
     )
 
-    coordinates = serializers.attributes.CoordinatesModelSerializer(
+    ownership = SlugRelatedField(
         many=False,
         read_only=True,
-    )
-    balcony = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="name",
-    )
-
-    driveways = SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field="name",
+        slug_field="value",
     )
 
     land_area_measurement = SlugRelatedField(
@@ -96,41 +48,113 @@ class ReObjectModelSerializer(ModelSerializer):
         slug_field="name",
     )
 
+    windows_orientation = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    repair = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
+
+    balcony = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
+
     sales_method = SlugRelatedField(
         many=False,
         read_only=True,
         slug_field="name",
     )
+
+    type_house = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
+
+    lift = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    foundation = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    wall_material = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    relief_area = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    fencing = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    driveways = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="name",
+    )
+
+    village_fences = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
+    coordinates = serializers.attributes.CoordinatesModelSerializer(
+        many=False,
+        read_only=True,
+    )
+
     # photos
-    photos = ReObjectImageModelSerializer(
+    photo_images = ReObjectImageModelSerializer(
         many=True,
         read_only=True,
     )
-    photos_images = ListField(
+    photo_images_files = ListField(
         child=FileField(required=False),
         write_only=True,
     )
 
     # plans
-    plans = ReObjectPlanModelSerializer(
+    plans_images = ReObjectPlanModelSerializer(
         many=True,
         read_only=True,
     )
 
-    plans_images = ListField(
+    plans_images_files = ListField(
         child=FileField(required=False),
         write_only=True,
     )
 
     # services
-    services = ReObjectEngineeringServicesModelSerializer(
+    display_engineering_services = ReObjectEngineeringServicesModelSerializer(
         many=True,
         read_only=True,
         source="re_objects",
     )
 
     # agents
-    agents = ReObjectEmployeeModelSerializer(
+    display_agents = ReObjectEmployeeModelSerializer(
         many=True,
         read_only=True,
         source="reobjectemployees",
@@ -140,36 +164,52 @@ class ReObjectModelSerializer(ModelSerializer):
         model = models.objects_re.ReObject
         fields = [
             "id",
+            "visible_on_site",
             "name",
             "category",
-            "type_house",
-            "number_of_storeys",
-            "floor",
-            "number_of_rooms",
-            "total_area",
+            "place",
+            "distance_CAD",
+            "metro",
+            "land_category",
+            "approve_usage",
+            "ownership",
+            "area_house",
+            "land_area_measurement",
+            "area_plot",
+            "area_flat",
             "living_area",
             "kitchen_area",
+            "area_room",
+            "number_of_rooms",
+            "number_of_storeys",
+            "floor",
+            "window_material",
             "windows_orientation",
-            "ownership",
-            "land_category",
-            "land_area_measurement",
-            "land_area",
-            "relief_area",
-            "fencing",
+            "ceiling_height",
+            "repair",
+            "wc",
+            "balcony",
+            "sales_method",
+            "type_house",
+            "date_foundation",
+            "lift",
             "foundation",
             "wall_material",
+            "price",
+            "relief_area",
+            "fencing",
+            "buildings_on_plot",
+            "driveways",
             "village_fences",
             "object_description",
-            "services",
             "coordinates",
-            "repair",
-            "balcony",
-            "driveways",
-            "photos",
-            "photos_images",
-            "plans",
+            "yandex_map_link",
+            "date_sale",
+            "you_tube_link",
+            "display_engineering_services",
+            "display_agents",
             "plans_images",
-            "window_material",
-            "sales_method",
-            "agents",
+            "plans_images_files",
+            "photo_images",
+            "photo_images_files",
         ]

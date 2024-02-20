@@ -17,6 +17,8 @@ from .driveways import Driveways
 from .area_of_measurement import AreaOfMeasurement
 from .window_material import WindowMaterial
 from .sales_method import SalesMethod
+from .lift import Lift
+from .approve_usage import ApproveUsage
 
 __all__ = [
     "Category",
@@ -38,4 +40,6 @@ __all__ = [
     "AreaOfMeasurement",
     "WindowMaterial",
     "SalesMethod",
+    "Lift",
+    "ApproveUsage",
 ]

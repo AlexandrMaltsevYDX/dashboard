@@ -14,7 +14,7 @@ from . import (
 class ReObjectImage(BaseModel):
     re_object = ForeignKey(
         reobject.ReObject,
-        related_name="photos",
+        related_name="photo_images",
         on_delete=CASCADE,
     )
     image = FileField(upload_to="reobjects/")

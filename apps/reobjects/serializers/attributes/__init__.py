@@ -17,6 +17,9 @@ from .driveways import DrivewaysModelSerializer
 from .area_of_measurement import AreaOfMeasurementModelSerializer
 from .window_material import WindowMaterialModelSerializer
 from .sales_method import SalesMethodModelSerializer
+from .lift import LiftModelSerializer
+
+from .approve_usage import ApproveUsageModelSerializer
 
 __all__ = [
     "CategoryModelSerializer",
@@ -38,4 +41,6 @@ __all__ = [
     "AreaOfMeasurementModelSerializer",
     "WindowMaterialModelSerializer",
     "SalesMethodModelSerializer",
+    "LiftModelSerializer",
+    "ApproveUsageModelSerializer",
 ]
