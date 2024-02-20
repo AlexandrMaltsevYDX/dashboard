@@ -8,6 +8,7 @@ from apps.applications import (
     models,
     serializers,
 )
+from apps.core.serializers import StandardResultsSetPagination
 
 
 class ApplicationModelViewSet(
@@ -20,6 +21,7 @@ class ApplicationModelViewSet(
 ):
     queryset = models.application.Application.objects.all()
     serializer_class = serializers.application.AnnotationModelSerializer
+    pagination_class = StandardResultsSetPagination
     parser_classes = [
         parsers.MultiPartParser,
     ]

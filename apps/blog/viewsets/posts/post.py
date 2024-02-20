@@ -7,6 +7,7 @@ from apps.blog import (
     models,
     serializers,
 )
+from apps.core.serializers import StandardResultsSetPagination
 
 
 class PostModelViewSet(
@@ -19,6 +20,7 @@ class PostModelViewSet(
 ):
     queryset = models.posts.Post.objects.all()
     serializer_class = serializers.posts.PostModelSerializer
+    pagination_class = StandardResultsSetPagination
     filterset_fields = [
         "author__username",
     ]

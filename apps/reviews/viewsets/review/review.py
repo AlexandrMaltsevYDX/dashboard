@@ -4,6 +4,7 @@ from rest_framework import (
     parsers,
 )
 
+from apps.core.serializers import StandardResultsSetPagination
 from apps.reviews import (
     models,
     serializers,
@@ -20,6 +21,7 @@ class ReviewModelViewSet(
 ):
     queryset = models.review.Review.objects.all()
     serializer_class = serializers.review.ReviewModelSerializer
+    pagination_class = StandardResultsSetPagination
     parser_classes = [
         parsers.MultiPartParser,
     ]

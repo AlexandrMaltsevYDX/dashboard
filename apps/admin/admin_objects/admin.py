@@ -153,7 +153,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         return ", ".join(agents)
 
     def photos_main(self, obj):
-        photos = obj.photos.all()
+        photos = obj.photo_images.all()
         if len(photos) > 0:
             return format_html(
                 '<img src="{}" alt="{}" height="50"/>'.format(
@@ -164,7 +164,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
 
     def plans_images(self, obj):
         """for local"""
-        plans = obj.reobjectplans.all()
+        plans = obj.plans_images.all()
 
         return format_html(
             "<br>".join(
