@@ -20,8 +20,8 @@ class BalconyModelViewSet(
     queryset = models.attributes.Balcony.objects.all()
     serializer_class = serializers.attributes.BalconyModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

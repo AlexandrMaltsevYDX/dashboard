@@ -20,8 +20,8 @@ class VillageFencesModelViewSet(
     queryset = models.attributes.VillageFences.objects.all()
     serializer_class = serializers.attributes.VillageFencesModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

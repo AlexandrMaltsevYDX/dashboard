@@ -20,8 +20,8 @@ class OwnershipModelViewSet(
     queryset = models.attributes.Ownership.objects.all()
     serializer_class = serializers.attributes.OwnershipModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

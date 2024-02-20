@@ -20,8 +20,8 @@ class EngineeringServicesModelViewSet(
     queryset = models.attributes.EngineeringServices.objects.all()
     serializer_class = serializers.attributes.EngineeringServicesModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

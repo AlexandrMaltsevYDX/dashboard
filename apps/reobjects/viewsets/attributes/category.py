@@ -20,8 +20,8 @@ class CategoryModelViewSet(
     queryset = models.attributes.Category.objects.all()
     serializer_class = serializers.attributes.CategoryModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

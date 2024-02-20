@@ -20,8 +20,8 @@ class RepairModelViewSet(
     queryset = models.attributes.Repair.objects.all()
     serializer_class = serializers.attributes.RepairModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

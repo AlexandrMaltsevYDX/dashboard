@@ -12,3 +12,9 @@ class UserViewSet(
 ):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    http_method_names = [
+        # "post",
+        # "delete",
+        # "put",
+        "get",
+    ]

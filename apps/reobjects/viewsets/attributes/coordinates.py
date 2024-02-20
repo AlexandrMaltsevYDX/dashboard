@@ -20,8 +20,8 @@ class CoordinatesModelViewSet(
     queryset = models.attributes.Coordinates.objects.all()
     serializer_class = serializers.attributes.CoordinatesModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

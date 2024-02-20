@@ -20,8 +20,8 @@ class ServiceModelViewSet(
     queryset = models.service.Service.objects.all()
     serializer_class = serializers.service.ServiceModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

@@ -20,8 +20,8 @@ class TypeHouseModelViewSet(
     queryset = models.attributes.TypeHouse.objects.all()
     serializer_class = serializers.attributes.TypeHouseModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

@@ -15,29 +15,32 @@ class ReviewModelSerializer(ModelSerializer):
         many=True,
         read_only=True,
     )
-    images = ListField(
-        child=FileField(required=False),
-        write_only=True,
-        required=False,
-    )
+    # images = ListField(
+    #     child=FileField(
+    #         required=False,
+    #     ),
+    #     write_only=True,
+    #     required=False,
+    # )
 
     class Meta:
         model = models.review.Review
         fields = [
+            "uuid",
             "text",
             "author_name",
             "date_sale",
-            "images",
+            # "images",
             "photos",
             "link_to_src",
         ]
 
-    def save(self, *args, **kwargs):
-        # print("===========>     validated_data", self.validated_data)
-        images_data = self.validated_data.pop("images")
-        super().save(*args, **kwargs)
-        if images_data:
-            self.instance.reviewimages.all().delete()
-            for image in images_data:
-                self.instance.reviewimages.create(image=image)
-        return self.instance
+    # def save(self, *args, **kwargs):
+    #     print("===========>     validated_data", self.validated_data)
+    #     images_data = self.validated_data.pop("images")
+    #     super().save(*args, **kwargs)
+    #     if images_data:
+    #         self.instance.reviewimages.all().delete()
+    #         for image in images_data:
+    #             self.instance.reviewimages.create(image=image)
+    #     return self.instance

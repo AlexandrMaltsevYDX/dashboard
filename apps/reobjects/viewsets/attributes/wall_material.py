@@ -20,8 +20,8 @@ class WallMaterialModelViewSet(
     queryset = models.attributes.WallMaterial.objects.all()
     serializer_class = serializers.attributes.WallMaterialModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

@@ -7,3 +7,9 @@ router.register(
     prefix=r"reviews",
     viewset=viewsets.review.ReviewModelViewSet,
 )
+
+
+router.register(
+    prefix=r"reviews_images",
+    viewset=viewsets.review.ReviewImageModelViewSet,
+)

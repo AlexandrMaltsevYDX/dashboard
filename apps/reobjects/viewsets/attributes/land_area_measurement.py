@@ -20,8 +20,8 @@ class AreaOfMeasurementModelViewSet(
     queryset = models.attributes.AreaOfMeasurement.objects.all()
     serializer_class = serializers.attributes.AreaOfMeasurementModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

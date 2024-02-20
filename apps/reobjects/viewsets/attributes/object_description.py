@@ -20,8 +20,8 @@ class ObjectDescriptionModelViewSet(
     queryset = models.attributes.ObjectDescription.objects.all()
     serializer_class = serializers.attributes.ObjectDescriptionModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

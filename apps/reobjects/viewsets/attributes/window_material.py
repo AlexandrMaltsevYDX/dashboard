@@ -20,8 +20,8 @@ class WindowMaterialModelViewSet(
     queryset = models.attributes.WindowMaterial.objects.all()
     serializer_class = serializers.attributes.WindowMaterialModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

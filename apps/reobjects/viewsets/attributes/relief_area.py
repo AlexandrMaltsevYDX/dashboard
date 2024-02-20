@@ -20,8 +20,8 @@ class ReliefAreaModelViewSet(
     queryset = models.attributes.ReliefArea.objects.all()
     serializer_class = serializers.attributes.ReliefAreaModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

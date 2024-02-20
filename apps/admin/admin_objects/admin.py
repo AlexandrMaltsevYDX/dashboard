@@ -47,6 +47,28 @@ class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
 
 @admin.register(ReObjectProxy)
 class ReObjectProxyModel(admin.ModelAdmin):
+    list_filter = [
+        "visible_on_site",
+        "category",
+    ]
+
+    search_fields = [
+        "name",
+        "category__name",
+        "place",
+        "metro",
+        "land_category__value",
+        "approve_usage__value",
+        "ownership__value",
+        "repair__name",
+        "balcony__name",
+        "sales_method__name",
+        "type_house__name",
+        "foundation__value",
+        "wall_material__value",
+        "object_description",
+    ]
+
     inlines = [
         ReObjectImageProxyInline,
         ReObjectPlanModelInline,
@@ -58,23 +80,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "id",
         "name",
         "category",
-        "type_house",
-        "number_of_storeys",
-        "floor",
-        "number_of_rooms",
-        "living_area",
-        "kitchen_area",
-        "windows_orientation",
-        "ownership",
-        "land_category",
-        "relief_area",
-        "fencing",
-        "foundation",
-        "wall_material",
-        "village_fences",
-        "display_engineering_services",
-        "object_description",
-        "coordinates",
+        "visible_on_site",
     ]  # Customize as needed
     # exclude = ("uuid",)
 
@@ -153,7 +159,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         return ", ".join(agents)
 
     def photos_main(self, obj):
-        photos = obj.photos.all()
+        photos = obj.photo_images.all()
         if len(photos) > 0:
             return format_html(
                 '<img src="{}" alt="{}" height="50"/>'.format(
@@ -164,7 +170,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
 
     def plans_images(self, obj):
         """for local"""
-        plans = obj.reobjectplans.all()
+        plans = obj.plans_images.all()
 
         return format_html(
             "<br>".join(

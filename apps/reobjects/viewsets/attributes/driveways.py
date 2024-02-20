@@ -20,8 +20,8 @@ class DrivewaysModelViewSet(
     queryset = models.attributes.Driveways.objects.all()
     serializer_class = serializers.attributes.DrivewaysModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

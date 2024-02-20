@@ -20,8 +20,8 @@ class JobTitleModelViewSet(
     queryset = models.jobtitle.JobTitle.objects.all()
     serializer_class = serializers.jobtitle.JobTitleModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

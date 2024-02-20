@@ -20,8 +20,8 @@ class WindowsOrientationModelViewSet(
     queryset = models.attributes.WindowsOrientation.objects.all()
     serializer_class = serializers.attributes.WindowsOrientationModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

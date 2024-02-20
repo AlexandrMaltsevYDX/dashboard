@@ -20,8 +20,8 @@ class SalesMethodModelViewSet(
     queryset = models.attributes.SalesMethod.objects.all()
     serializer_class = serializers.attributes.SalesMethodModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

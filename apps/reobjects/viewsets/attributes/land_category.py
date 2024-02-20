@@ -20,8 +20,8 @@ class LandCategoryModelViewSet(
     queryset = models.attributes.LandCategory.objects.all()
     serializer_class = serializers.attributes.LandCategoryModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]

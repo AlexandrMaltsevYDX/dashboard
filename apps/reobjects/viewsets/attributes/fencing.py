@@ -20,8 +20,8 @@ class FencingModelViewSet(
     queryset = models.attributes.Fencing.objects.all()
     serializer_class = serializers.attributes.FencingModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]
