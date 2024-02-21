@@ -50,6 +50,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
     list_filter = [
         "visible_on_site",
         "category",
+        "repair__name",
     ]
 
     search_fields = [
