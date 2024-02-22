@@ -80,6 +80,65 @@ INSTALLED_APPS = [
     "apps.admin.admin_applications",
 ]
 
+JAZZMIN_SETTINGS = {
+    "site_title": "Library Admin",
+    "site_brand": "Загородный Стиль",
+    "hide_apps": [
+        "apps_blog",
+    ],
+    "hide_models": [
+        "apps_users.Group",
+        "apps_users.JobTitle",
+    ],
+    # Links to put along the top menu
+    "topmenu_links": [
+        # Url that gets reversed (Permissions can be added)
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "apps_admin_objects"},
+        {"app": "apps_reobjects"},
+        {"app": "apps_admin_village"},
+        {"app": "apps_village"},
+        {"app": "apps_admin_employees"},
+        {"app": "apps_admin_blog"},
+        {"app": "apps_admin_review"},
+        {"app": "apps_admin_applications"},
+        {"app": "apps_admin_service"},
+    ],
+    "show_ui_builder": True,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": True,
+    "brand_small_text": False,
+    "brand_colour": "navbar-info",
+    "accent": "accent-primary",
+    "navbar": "navbar-info navbar-dark",
+    "no_navbar_border": True,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-info",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": True,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": True,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success",
+    },
+}
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
