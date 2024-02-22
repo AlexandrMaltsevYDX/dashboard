@@ -60,6 +60,12 @@ class EmployeeProfileModel(TimeStampedModel, BaseModel):
         verbose_name="Должность",
     )
 
+    location = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Район, Районы",
+    )
+
     def save(self, *args, **kwargs):
         self.username = self.user.username
         self.first_name = self.user.first_name
