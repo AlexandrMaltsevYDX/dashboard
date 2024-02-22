@@ -105,8 +105,9 @@ JAZZMIN_SETTINGS = {
         {"app": "apps_admin_service"},
     ],
     "show_ui_builder": True,
-    "related_modal_active": True,
-    "custom_css": "static/main.css",
+    # "related_modal_active": True,
+    "custom_css": "main.css",
+    "custom_js": "main.js",
     # "language_chooser": True,
 }
 
