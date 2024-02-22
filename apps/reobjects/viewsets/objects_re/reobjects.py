@@ -20,8 +20,8 @@ class ReObjectModelViewSet(
     queryset = models.objects_re.ReObject.objects.all()
     serializer_class = serializers.objects_re.ReObjectModelSerializer
     http_method_names = [
-        "post",
-        "delete",
-        "put",
+        # "post",
+        # "delete",
+        # "put",
         "get",
     ]
