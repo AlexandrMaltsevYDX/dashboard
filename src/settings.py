@@ -105,6 +105,8 @@ JAZZMIN_SETTINGS = {
         {"app": "apps_admin_service"},
     ],
     "show_ui_builder": True,
+    "related_modal_active": True
+    # "language_chooser": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -139,6 +141,7 @@ JAZZMIN_UI_TWEAKS = {
     },
 }
 
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -149,6 +152,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 ROOT_URLCONF = "src.urls"
 

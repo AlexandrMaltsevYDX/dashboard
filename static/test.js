@@ -1,4 +1,4 @@
-function category_handler(e) {
+// function category_handler(e) {
     // let b = false
     // const selectElement = e.target
     // const type_house = document.getElementById("id_type_house")
@@ -18,13 +18,13 @@ function category_handler(e) {
     //     if (i.textContent === "Неприменимо")
     //         console.log(i.selected = true)
     // }
-    console.log("Cooollll")
+    // console.log("Cooollll")
 
 
 }
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    console.log("DOM fully loaded and parsed");
-    const category = document.getElementById("id_category")
-    category.addEventListener('change', category_handler)
-});
+//
+// document.addEventListener("DOMContentLoaded", function (event) {
+//     console.log("DOM fully loaded and parsed");
+//     const category = document.getElementById("id_category")
+//     category.addEventListener('change', category_handler)
+// });
