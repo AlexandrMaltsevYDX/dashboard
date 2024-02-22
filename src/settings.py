@@ -104,7 +104,7 @@ JAZZMIN_SETTINGS = {
         {"app": "apps_admin_applications"},
         {"app": "apps_admin_service"},
     ],
-    # "show_ui_builder": True,
+    "show_ui_builder": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -116,10 +116,10 @@ JAZZMIN_UI_TWEAKS = {
     "accent": "accent-primary",
     "navbar": "navbar-info navbar-dark",
     "no_navbar_border": True,
-    "navbar_fixed": False,
+    "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": True,
-    "sidebar_fixed": False,
+    "sidebar_fixed": True,
     "sidebar": "sidebar-dark-info",
     "sidebar_nav_small_text": True,
     "sidebar_disable_expand": False,
