@@ -1,0 +1,33 @@
+.select2-container {
+    min-width: 200px;
+    /*display: none;*/
+}
+
+.select2-container .select2-selection--single {
+    border: 1px solid #ced4da !important;
+    min-height: 38px;
+    display: none;
+    /* Center text inside */
+    display: flex !important;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #ced4da;
+    display: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    right: 5px !important;
+    top: unset !important;
+    display: none;
+}
+
+.select2-results__option {
+    color: black;
+    display: none;
+}
+
+select {
+    background-color: blue;
+}
