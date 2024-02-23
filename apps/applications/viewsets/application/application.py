@@ -28,8 +28,8 @@ class ApplicationModelViewSet(
 
     http_method_names = [
         "post",
-        "delete",
-        "put",
+        # "delete",
+        # "put",
         "get",
     ]
 
