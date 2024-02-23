@@ -41,7 +41,7 @@ class PostAdmin(admin.ModelAdmin):
         return "Photo"
 
     def tags_display(self, obj):
-        post_tags = obj.posts.all().values_list("tag__name", flat=True)
+        post_tags = obj.posts_posts.all().values_list("tag__name", flat=True)
         return ", ".join(post_tags)
 
     photo.short_description = "Photo"
