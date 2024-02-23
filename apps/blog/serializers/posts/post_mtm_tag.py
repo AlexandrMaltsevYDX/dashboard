@@ -6,11 +6,13 @@ from rest_framework.serializers import (
     StringRelatedField,
 )
 from apps.blog import models, serializers
+from .tag import TagModelSerializer
 
 
 class PostTagsModelSerializer(ModelSerializer):
-    # engineering_service = SlugRelatedField(read_only=True, slug_field="value")
+    tag = TagModelSerializer()
 
     class Meta:
+        ordering = ["tag"]
         model = models.posts.PostTagsModel
         fields = "__all__"

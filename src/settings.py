@@ -143,6 +143,7 @@ JAZZMIN_UI_TWEAKS = {
         "danger": "btn-danger",
         "success": "btn-success",
     },
+    "actions_sticky_top": True,
 }
 
 

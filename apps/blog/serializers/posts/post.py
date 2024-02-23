@@ -7,6 +7,7 @@ from rest_framework.serializers import (
 from apps.blog import models, serializers
 from .image import PostImageModelSerializer
 from .post_mtm_tag import PostTagsModelSerializer
+from .tag import TagModelSerializer
 
 
 class PostModelSerializer(ModelSerializer):
@@ -18,7 +19,8 @@ class PostModelSerializer(ModelSerializer):
     tags = PostTagsModelSerializer(
         many=True,
         read_only=True,
-        source="posts",
+        source="posts_posts",
+        # default=1,
     )
     author = SlugRelatedField(
         slug_field="username",
@@ -26,5 +28,6 @@ class PostModelSerializer(ModelSerializer):
     )
 
     class Meta:
+        ordering = ["author"]
         model = models.posts.Post
         fields = "__all__"

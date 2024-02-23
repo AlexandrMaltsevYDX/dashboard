@@ -8,7 +8,7 @@ from .tag import Tag
 class PostTagsModel(BaseModel):
     post = ForeignKey(
         Post,
-        related_name="posts",
+        related_name="posts_posts",
         on_delete=CASCADE,
     )
     tag = ForeignKey(

@@ -4,5 +4,6 @@ from apps.blog import models
 
 class TagModelSerializer(serializers.ModelSerializer):
     class Meta:
+        ordering = ["name"]
         model = models.posts.Tag
-        fields = "__all__"
+        fields = ["uuid", "name"]

@@ -29,5 +29,6 @@ class Post(BaseModel):
         return self.name
 
     class Meta:
+        ordering = ["author"]
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
