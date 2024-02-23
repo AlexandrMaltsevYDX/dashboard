@@ -22,16 +22,3 @@
 .select2-results__option {
     display: none !important;
 }
-
-.select2-hidden-accessible {
-    /* border: 0 !important; */
-    /* clip: rect(0 0 0 0) !important; */
-    /* -webkit-clip-path: inset(50%) !important; */
-    /* clip-path: inset(50%) !important; */
-    /* height: 1px !important; */
-    overflow: initial !important;
-    /* padding: 0 !important; */
-    position: relative !important;
-    /* width: 1px !important; */
-    /* white-space: nowrap !important; */
-}
