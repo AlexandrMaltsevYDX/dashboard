@@ -46,6 +46,11 @@ services:
     networks:
       - dashboard_networks
 
+#  redis:
+#    image: 'redis:7.2.4-alpine'
+#    ports:
+#      - '6379:6379'
+
 volumes:
   media:
     driver: local

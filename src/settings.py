@@ -323,3 +323,11 @@ MDEDITOR_CONFIGS = {
         "language": "en",  # zh / en / es
     }
 }
+
+CELERY_TIMEZONE = "UTC"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = env(
+    "CELERY_BROKER_URL",
+    default="redis://localhost/0",
+)

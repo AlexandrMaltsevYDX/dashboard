@@ -14,8 +14,9 @@ class PostModelSerializer(ModelSerializer):
     photos = PostImageModelSerializer(
         many=True,
         read_only=True,
+        source="postimages",
     )
-    images = ListField(child=FileField(required=False), write_only=True)
+    # images = ListField(child=FileField(required=False), write_only=True)
     tags = PostTagsModelSerializer(
         many=True,
         read_only=True,
@@ -30,4 +31,11 @@ class PostModelSerializer(ModelSerializer):
     class Meta:
         ordering = ["author"]
         model = models.posts.Post
-        fields = "__all__"
+        fields = [
+            "uuid",
+            "tags",
+            "author",
+            "photos",
+            "name",
+            "body",
+        ]
