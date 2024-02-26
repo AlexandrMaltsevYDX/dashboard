@@ -18,6 +18,7 @@ from .area_of_measurement import AreaOfMeasurementModelSerializer
 from .window_material import WindowMaterialModelSerializer
 from .sales_method import SalesMethodModelSerializer
 from .lift import LiftModelSerializer
+from .visible_on_site import VisibleOnSiteModelSerializer
 
 from .approve_usage import ApproveUsageModelSerializer
 
@@ -43,4 +44,5 @@ __all__ = [
     "SalesMethodModelSerializer",
     "LiftModelSerializer",
     "ApproveUsageModelSerializer",
+    "VisibleOnSiteModelSerializer",
 ]

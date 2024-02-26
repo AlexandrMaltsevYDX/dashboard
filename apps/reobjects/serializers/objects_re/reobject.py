@@ -9,6 +9,7 @@ from .image import ReObjectImageModelSerializer
 from .plan_image import ReObjectPlanModelSerializer
 from .reobject_mtm_enjineeringservice import ReObjectEngineeringServicesModelSerializer
 from .reobject_mtm_employee import ReObjectEmployeeModelSerializer
+from .reobject_mtm_visibleonsite import ReObjectVisibleOnSiteModelSerializer
 
 
 class ReObjectModelSerializer(ModelSerializer):
@@ -160,11 +161,17 @@ class ReObjectModelSerializer(ModelSerializer):
         source="reobjectemployees",
     )
 
+    display_pages = ReObjectVisibleOnSiteModelSerializer(
+        many=True,
+        read_only=True,
+        source="reobjectsite",
+    )
+
     class Meta:
         model = models.objects_re.ReObject
         fields = [
             "id",
-            "visible_on_site",
+            # "visible_on_site",
             "name",
             "category",
             "place",
@@ -212,4 +219,5 @@ class ReObjectModelSerializer(ModelSerializer):
             "plans_images_files",
             "photo_images",
             "photo_images_files",
+            "display_pages",
         ]

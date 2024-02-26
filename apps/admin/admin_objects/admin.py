@@ -26,6 +26,12 @@ class ReObjectEmploeeProxyInline(admin.TabularInline):
     # readonly_fields = ("tag", "text")
 
 
+class ReObjectVisibleObSiteProxyInline(admin.TabularInline):
+    model = models.objects_re.ReObjectVisibleOnSite
+    extra = 1
+    # readonly_fields = ("tag", "text")
+
+
 class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
     model = ReObjectEngineeringServicesProxy
     extra = 1
@@ -48,7 +54,7 @@ class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
 @admin.register(ReObjectProxy)
 class ReObjectProxyModel(admin.ModelAdmin):
     list_filter = [
-        "visible_on_site",
+        # "visible_on_site",
         "category",
         "repair__name",
     ]
@@ -75,13 +81,14 @@ class ReObjectProxyModel(admin.ModelAdmin):
         ReObjectPlanModelInline,
         ReObjectEngineeringServicesProxyInline,
         ReObjectEmploeeProxyInline,
+        ReObjectVisibleObSiteProxyInline,
     ]
     list_display = [
         "photos_main",
         "id",
         "name",
         "category",
-        "visible_on_site",
+        # "visible_on_site",
     ]  # Customize as needed
     # exclude = ("uuid",)
 
@@ -90,11 +97,12 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "plans_images",
         "display_engineering_services",
         "display_agents",
+        "display_pages",
     )
 
     fields = [
         "id",
-        "visible_on_site",
+        # "visible_on_site",
         "name",
         "category",
         "place",
@@ -140,6 +148,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "display_agents",
         "plans_images",
         "photo_images",
+        "display_pages",
     ]
 
     def display_engineering_services(self, obj):
@@ -158,6 +167,14 @@ class ReObjectProxyModel(admin.ModelAdmin):
         ]
         print(agents)
         return ", ".join(agents)
+
+    def display_pages(self, obj):
+        # agents = obj.reobjectemployees.all().values_list(
+        #     "employee__username", flat=True
+        # )
+        pages = [f"{i.page.value}" for i in obj.reobjectsite.all()]
+        print(pages)
+        return ", ".join(pages)
 
     def photos_main(self, obj):
         photos = obj.photo_images.all()
@@ -195,6 +212,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
     photos_main.short_description = "Первое фото"
     display_engineering_services.short_description = "Инженерные коммуникации"
     display_agents.short_description = "Агенты"
+    display_pages.short_description = "Отображение на сайте"
 
     class Media:
         js = [static("test.js")]

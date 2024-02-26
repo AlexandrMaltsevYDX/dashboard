@@ -19,4 +19,9 @@ class ReObjectEngineeringServices(BaseModel):
         models.attributes.EngineeringServices,
         on_delete=CASCADE,
         related_name="engineering_services",
+        verbose_name="Коммуникации",
     )
+
+    class Meta:
+        verbose_name = "Инженерные коммуникации"
+        verbose_name_plural = "Инженерные коммуникации"

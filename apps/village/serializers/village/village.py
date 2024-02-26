@@ -1,11 +1,104 @@
-from rest_framework import serializers
-from apps.village import models
+from rest_framework.serializers import (
+    ModelSerializer,
+    SlugRelatedField,
+)
+from apps.village import models, serializers
+from ..relationships import (
+    VillageEngineeringServicesModelSerializer,
+    VillageEmployeeModelSerializer,
+)
+from .image import VillageImageModelSerializer
+from .plan_image import VillagePlanModelSerializer
 
 
-class VillageModelSerializer(serializers.ModelSerializer):
+class VillageModelSerializer(ModelSerializer):
+    wall_material = SlugRelatedField(
+        slug_field="value",
+        read_only=True,
+    )
+
+    foundation = SlugRelatedField(
+        slug_field="value",
+        read_only=True,
+    )
+
+    area_of_plot_measurement = SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
+
+    category_land = SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
+
+    relief_area_plot = SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
+
+    fencing_village = SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
+
+    security_village = SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
+
+    photo_images = VillageImageModelSerializer(
+        many=True,
+        read_only=True,
+        source="villageimages",
+    )
+    plans_images = VillagePlanModelSerializer(
+        many=True,
+        read_only=True,
+        source="villageplans",
+    )
+    # services
+    display_engineering_services = VillageEngineeringServicesModelSerializer(
+        many=True,
+        read_only=True,
+        source="villages",
+    )
+
+    # agents
+    display_agents = VillageEmployeeModelSerializer(
+        many=True,
+        read_only=True,
+        source="villageemployees",
+    )
+
     class Meta:
         model = models.village.Village
-        fields = "__all__"
+        fields = [
+            "uuid",
+            "id",
+            # "visible_on_site",
+            "name",
+            "distance_CAD",
+            "area_of_houses",
+            "wall_material",
+            "buildings_of_villages",
+            "foundation",
+            "area_of_plot_measurement",
+            "category_land",
+            "relief_area_plot",
+            "area_of_plot",
+            "relief_area_plot",
+            "display_engineering_services",
+            "photo_images",
+            "plans_images",
+            "display_agents",
+            "fencing_village",
+            "security_village",
+            "object_description",
+            "buildings_on_plot",
+            "you_tube_link",
+            "yandex_map_link",
+        ]
 
 
 #

@@ -7,7 +7,7 @@ from apps.village import models
 
 
 class VillageEngineeringServices(BaseModel):
-    re_object = ForeignKey(
+    village = ForeignKey(
         models.village.Village,
         on_delete=CASCADE,
         related_name="villages",
@@ -17,3 +17,10 @@ class VillageEngineeringServices(BaseModel):
         on_delete=CASCADE,
         related_name="village_engineering_services",
     )
+
+    def __str__(self):
+        return str(self.uuid)
+
+    class Meta:
+        verbose_name = "Инженерные коммуникации"
+        verbose_name_plural = "Инженерные коммуникации"

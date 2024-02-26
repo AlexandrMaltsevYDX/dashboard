@@ -20,6 +20,12 @@ class VillagePlanModelProxyInline(admin.TabularInline):
     # exclude = ("uuid",)
 
 
+class VillageEmployeeProxyInline(admin.TabularInline):
+    model = models.relationships.VillageEmployee
+    extra = 1
+    # readonly_fields = ("tag", "text")
+
+
 class VillageEngineeringServicesProxyInline(admin.TabularInline):
     model = models.relationships.VillageEngineeringServices
     extra = 1
@@ -45,6 +51,7 @@ class VillageProxyModel(admin.ModelAdmin):
         VillageImageModelProxyInline,
         VillagePlanModelProxyInline,
         VillageEngineeringServicesProxyInline,
+        VillageEmployeeProxyInline,
     ]
     list_display = [
         "id",
@@ -57,6 +64,7 @@ class VillageProxyModel(admin.ModelAdmin):
         "images_village",
         "plans_village",
         "display_engineering_services",
+        "display_agents",
     )
 
     def first_image(self, obj):
@@ -107,8 +115,17 @@ class VillageProxyModel(admin.ModelAdmin):
         )
         return ", ".join(village_engineering_services)
 
+    def display_agents(self, obj):
+        agents = [
+            f"{i.employee.first_name} {i.employee.last_name}"
+            for i in obj.villageemployees.all()
+        ]
+        print(agents)
+        return ", ".join(agents)
+
     first_image.short_description = "Первая фотография объекта"
     images_village.short_description = "Фото объектов"
     first_plan.short_description = "Первый план объекта"
     plans_village.short_description = "Планы объектов"
     display_engineering_services.short_description = "Инженерные коммуникации"
+    display_agents.short_description = "Агенты"

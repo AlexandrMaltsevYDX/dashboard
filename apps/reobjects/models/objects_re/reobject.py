@@ -24,12 +24,6 @@ class ReObject(TimeStampedModel, BaseModel):
         verbose_name="ID объекта",
     )
 
-    visible_on_site = BooleanField(
-        blank=True,
-        null=True,
-        verbose_name="Отображать на сайте",
-    )
-
     name = TextField(
         max_length=255,
         verbose_name="Название объекта",
@@ -358,6 +352,9 @@ class ReObject(TimeStampedModel, BaseModel):
         null=True,
     )
     # t
+
+    def __str__(self):
+        return f"{self.name}"
 
     class Meta:
         verbose_name = "Объекты недвижимости"

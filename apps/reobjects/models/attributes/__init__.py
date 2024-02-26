@@ -19,6 +19,7 @@ from .window_material import WindowMaterial
 from .sales_method import SalesMethod
 from .lift import Lift
 from .approve_usage import ApproveUsage
+from .visible_on_site import VisibleOnSite
 
 __all__ = [
     "Category",
@@ -42,4 +43,5 @@ __all__ = [
     "SalesMethod",
     "Lift",
     "ApproveUsage",
+    "VisibleOnSite",
 ]

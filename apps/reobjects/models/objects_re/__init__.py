@@ -3,6 +3,7 @@ from .plan_image import ReObjectPlanModel
 from .reobject import ReObject
 from .reobject_mtm_enjineeringservice import ReObjectEngineeringServices
 from .reobject_mtm_employee import ReObjectEmployee
+from .reobject_mtm_visibleonsite import ReObjectVisibleOnSite
 
 __all__ = [
     "ReObjectImage",
@@ -10,4 +11,5 @@ __all__ = [
     "ReObjectEngineeringServices",
     "ReObjectPlanModel",
     "ReObjectEmployee",
+    "ReObjectVisibleOnSite",
 ]
