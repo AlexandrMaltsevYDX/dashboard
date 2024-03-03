@@ -47,6 +47,7 @@ CSRF_TRUSTED_ORIGINS = env(
 
 # Application definition
 INSTALLED_APPS = [
+    "apps.core",
     "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -166,7 +167,7 @@ ROOT_URLCONF = "src.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates", BASE_DIR / "apps" / "core" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -320,6 +321,7 @@ MDEDITOR_CONFIGS = {
         "watch": True,  # Live preview
         "lineWrapping": True,  # lineWrapping
         "lineNumbers": True,  # lineNumbers
+        "autoFocus": False,
         "language": "en",  # zh / en / es
     }
 }

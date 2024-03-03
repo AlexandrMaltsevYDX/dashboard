@@ -171,7 +171,6 @@ class ReObjectModelSerializer(ModelSerializer):
         model = models.objects_re.ReObject
         fields = [
             "id",
-            # "visible_on_site",
             "name",
             "category",
             "place",
