@@ -18,9 +18,11 @@ from apps.reobjects import models
 
 # Create your models here.
 class ReObject(TimeStampedModel, BaseModel):
-    id = IntegerField(
-        blank=True,
-        null=True,
+    id = PositiveBigIntegerField(
+        # blank=True,
+        # null=True,
+        # default=0,
+        unique=True,
         verbose_name="ID объекта",
     )
 

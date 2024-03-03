@@ -170,6 +170,7 @@ class ReObjectModelSerializer(ModelSerializer):
     class Meta:
         model = models.objects_re.ReObject
         fields = [
+            "uuid",
             "id",
             "name",
             "category",

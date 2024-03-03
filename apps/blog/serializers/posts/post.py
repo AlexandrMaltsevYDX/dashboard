@@ -24,7 +24,7 @@ class PostModelSerializer(ModelSerializer):
         # default=1,
     )
     author = SlugRelatedField(
-        slug_field="username",
+        slug_field="uuid",
         read_only=True,
     )
 
