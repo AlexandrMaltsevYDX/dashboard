@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const navitems = document.querySelectorAll(".nav-item")
         const addRows = document.querySelectorAll(".add-row")
         // console.log(selects)
-        selects.forEach((e) => test(e))
+        selects.forEach((e) => removeUselessClass(e))
         navitems.forEach((e) => addEvents(e))
         addRows.forEach((e) => addEvents(e))
     }, 500);
 });
 
 
-function test(elem) {
+function removeUselessClass(elem) {
     elem.classList.remove("select2-hidden-accessible")
 }
 

@@ -18,5 +18,5 @@ class ReviewImageModel(BaseImageModel):
         return str(self.uuid)
 
     class Meta:
-        verbose_name = "Скрин или фото к ревью"
-        verbose_name_plural = "Скрин или фото к ревью"
+        verbose_name = "Фото к ревью"
+        verbose_name_plural = "Фото к ревью"
