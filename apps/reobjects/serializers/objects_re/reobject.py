@@ -171,6 +171,7 @@ class ReObjectModelSerializer(ModelSerializer):
         model = models.objects_re.ReObject
         fields = [
             "uuid",
+            "created_at",
             "id",
             "name",
             "category",

@@ -8,7 +8,6 @@
 
 .select2-container .select2-selection--single {
     display: none !important;
-
 }
 
 .select2-container--default .select2-selection--single {
@@ -21,4 +20,8 @@
 
 .select2-results__option {
     display: none !important;
+}
+
+.hidden {
+    display: none;
 }
