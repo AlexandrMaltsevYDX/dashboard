@@ -217,9 +217,3 @@ class ReObjectProxyModel(admin.ModelAdmin):
     display_engineering_services.short_description = "Инженерные коммуникации"
     display_agents.short_description = "Агенты"
     display_pages.short_description = "Отображение на сайте"
-
-    class Media:
-        js = [static("test.js")]
-
-
-# Register your models here.
