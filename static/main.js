@@ -57,7 +57,6 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
     if (document.getElementById("labelFormyButton")) {
         document.getElementById("labelFormyButton").remove()
     }
-    console.log("addMultipleFilesInput", objectModel_uuid)
 
     const capKey = capitalize(key)
     const elem = document.body.innerText.includes(capKey)
@@ -68,9 +67,6 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
     labelFormyButton.for = "multipleFiles"
     labelFormyButton.textContent = `Добавить ${key}`
 
-
-    // myButton.value = "Добавить кучу фото"
-    // myButton.textContent = "Добавить кучу фото"
     myButton.type = "file"
     myButton.multiple = true
     myButton.id = "myButton"
@@ -78,7 +74,6 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
 
     myButton.classList.add("btn")
     myButton.classList.add("hidden")
-    // myButton.classList.add("form-control")
 
     labelFormyButton.classList.add("btn")
     labelFormyButton.classList.add("btn-success")
@@ -119,7 +114,8 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
             let body = {image: e.target.files[i], objectModel: objectModel_uuid}
             uploadFile(body, url)
         }
-        document.getElementById('uploadStatus').textContent = 'Success';
+        // document.getElementById('uploadStatus').textContent = 'Success';
+        location.reload()
     })
 
 
@@ -127,6 +123,8 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
         parentElem.appendChild(labelFormyButton)
         parentElem.appendChild(myButton)
     }
+
+
 }
 
 
@@ -144,8 +142,6 @@ function uploadFile(body, url) {
         .then(data => {
             console.log(data);
         })
-    window.location.reload()
-
 }
 
 function trigerInput() {
