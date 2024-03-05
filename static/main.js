@@ -1,13 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    // console.log("DOM fully loaded and parsed");
+    console.log("DOM fully loaded and parsed");
     const selects = document.querySelectorAll(".select2-hidden-accessible")
     selects.forEach((e) => removeUselessClass(e))
     setTimeout(() => {
-        // console.log("Delayed for 1 second.");
         const selects = document.querySelectorAll(".select2-hidden-accessible")
         const navitems = document.querySelectorAll(".nav-item")
         const addRows = document.querySelectorAll(".add-row")
-        // console.log(selects)
         selects.forEach((e) => removeUselessClass(e))
         navitems.forEach((e) => addEvents(e))
         addRows.forEach((e) => addEvents(e))
@@ -16,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 function removeUselessClass(elem) {
-    console.log("test!!!!")
     elem.classList.remove("select2-hidden-accessible")
 }
 
