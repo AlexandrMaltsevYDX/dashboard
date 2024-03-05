@@ -5,7 +5,7 @@ from .post import Post
 
 
 class PostImageModel(BaseImageModel):
-    post = ForeignKey(
+    objectModel = ForeignKey(
         Post,
         related_name="postimages",
         on_delete=CASCADE,

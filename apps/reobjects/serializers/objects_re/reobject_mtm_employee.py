@@ -9,8 +9,9 @@ from apps.reobjects import models, serializers
 
 
 class ReObjectEmployeeModelSerializer(ModelSerializer):
-    employee = StringRelatedField(
+    employee = SlugRelatedField(
         read_only=True,
+        slug_field="uuid",
     )
 
     class Meta:

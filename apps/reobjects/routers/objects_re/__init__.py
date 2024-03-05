@@ -8,3 +8,13 @@ router.register(
     prefix=r"objects",
     viewset=viewsets.objects_re.ReObjectModelViewSet,
 )
+
+router.register(
+    prefix=r"objects_images",
+    viewset=viewsets.objects_re.ReObjectImageModelViewSet,
+)
+
+router.register(
+    prefix=r"objects_plans",
+    viewset=viewsets.objects_re.ReObjectPlanModelViewSet,
+)

@@ -7,3 +7,13 @@ router.register(
     prefix=r"villages",
     viewset=viewsets.village.VillageModelViewSet,
 )
+
+router.register(
+    prefix=r"villages_images",
+    viewset=viewsets.village.VillageImageModelViewSet,
+)
+
+router.register(
+    prefix=r"villages_plans",
+    viewset=viewsets.village.VillagePlanModelViewSet,
+)

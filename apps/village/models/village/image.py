@@ -13,7 +13,7 @@ from .village import Village
 
 
 class VillageImageModel(BaseImageModel):
-    village = ForeignKey(
+    objectModel = ForeignKey(
         Village,
         related_name="villageimages",
         on_delete=CASCADE,

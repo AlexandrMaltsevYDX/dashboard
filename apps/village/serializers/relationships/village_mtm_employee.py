@@ -9,8 +9,9 @@ from apps.village import models, serializers
 
 
 class VillageEmployeeModelSerializer(ModelSerializer):
-    employee = StringRelatedField(
+    employee = SlugRelatedField(
         read_only=True,
+        slug_field="uuid",
     )
 
     class Meta:

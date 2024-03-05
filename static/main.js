@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     // console.log("DOM fully loaded and parsed");
+    const selects = document.querySelectorAll(".select2-hidden-accessible")
+    selects.forEach((e) => removeUselessClass(e))
     setTimeout(() => {
         // console.log("Delayed for 1 second.");
         const selects = document.querySelectorAll(".select2-hidden-accessible")
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 function removeUselessClass(elem) {
+    console.log("test!!!!")
     elem.classList.remove("select2-hidden-accessible")
 }
 
@@ -24,17 +27,19 @@ function addEvents(elem) {
 
 function postProcessing(ev) {
     const selects = document.querySelectorAll(".select2-hidden-accessible")
-    selects.forEach((e) => test(e))
-    const photoTab = ev.target.getAttribute("aria-controls")
-    console.log(photoTab)
+    selects.forEach((e) => removeUselessClass(e))
+    const tabName = ev.target.getAttribute("aria-controls")
+    console.log(tabName)
     const _url = new URL(window.location.href)
     console.log(_url.pathname); //api/v1/objects/objects/
-    if (photoTab.includes("фото")) {
-        addMultipleFilesInput("фото")
-    } else if (photoTab.includes("планы")) {
-        addMultipleFilesInput("планы")
-    } else if (photoTab.includes("планировки")) {
-        addMultipleFilesInput("планировки")
+
+    const pathObj = parsePath(_url.pathname)
+
+    if (tabName.includes("фото")) {
+        console.log("postProcessing", pathObj)
+        addMultipleFilesInput("фото", pathObj.model, pathObj.uuid)
+    } else if (tabName.includes("планы")) {
+        addMultipleFilesInput("планы", pathObj.model, pathObj.uuid)
     } else {
         if (document.getElementById("myButton")) {
             document.getElementById("myButton").remove()
@@ -45,13 +50,14 @@ function postProcessing(ev) {
     }
 }
 
-function addMultipleFilesInput(key) {
+function addMultipleFilesInput(key, model, objectModel_uuid) {
     if (document.getElementById("myButton")) {
         document.getElementById("myButton").remove()
     }
     if (document.getElementById("labelFormyButton")) {
         document.getElementById("labelFormyButton").remove()
     }
+    console.log("addMultipleFilesInput", objectModel_uuid)
 
     const capKey = capitalize(key)
     const elem = document.body.innerText.includes(capKey)
@@ -82,35 +88,64 @@ function addMultipleFilesInput(key) {
 
     myButton.addEventListener('change', (e) => {
         e.preventDefault()
-        const formData = new FormData();
-        for (let i = 0; i < e.target.files.length; i++) {
-            formData.append('files[]', e.target.files[i]);
-        }
-        // console.log([...formData]);
+
         const _url = new URL(window.location.href)
-        console.log(_url); //api/v1/objects/objects/
-        //
-        // fetch('/upload', {
-        //     method: 'POST',
-        //     body: formData,
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         document.getElementById('uploadStatus').textContent = 'Success';
-        //     })
-        // /admin/apps_admin_objects/reobjectproxy/df36cec6-4eb2-4c60-b225-da2a8e55d738/change/
-        //
-        //
-        //
-        //
-        // alert("file uploaded")
+
+
+        const urls = {
+            "villageproxy": {
+                "фото": "villages_images",
+                "планы": "villages_plans"
+            },
+            "reobjectproxy": {
+                "фото": "objects_images",
+                "планы": "objects_plans"
+            },
+            "employeeprofileproxymodel": {
+                "фото": "profiles_images"
+            },
+            "postproxy": {
+                "фото": "posts_images"
+            },
+            "reviewproxy": {
+                "фото": "reviews_images"
+            }
+        }
+
+
+        const url = `${_url.origin}/api/v1/${urls[model][key]}/`
+
+        for (let i = 0; i < e.target.files.length; i++) {
+            let body = {image: e.target.files[i], objectModel: objectModel_uuid}
+            uploadFile(body, url)
+        }
+        document.getElementById('uploadStatus').textContent = 'Success';
     })
+
 
     if (elem) {
         parentElem.appendChild(labelFormyButton)
         parentElem.appendChild(myButton)
     }
+}
+
+
+function uploadFile(body, url) {
+    const {objectModel, image} = body
+    console.log("uploadFile", body)
+    const formData = new FormData();
+    formData.append('image', image)
+    formData.append('objectModel', objectModel)
+    fetch(url, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+    // window.location.reload()
+
 }
 
 function trigerInput() {
@@ -123,25 +158,16 @@ function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const router = {
-    apps_admin_blog: {
-        photo: "/api/v1/blog/post/",
-        plan: "",
-    },
-    apps_admin_objects: {
-        photo: "0/api/v1/objects/objects/",
-        plan: "0/api/v1/objects/objects/",
-    },
-    apps_admin_village: {
-        photo: "0/api/v1/objects/objects/",
-        plan: "0/api/v1/objects/objects/",
-    },
-    apps_admin_employees: {
-        photo: "0/api/v1/objects/objects/",
-        plan: "0/api/v1/objects/objects/",
-    },
-    apps_admin_review: {
-        photo: "0/api/v1/objects/objects/",
-        plan: "0/api/v1/objects/objects/",
+function parsePath(str) {
+    const ar = str.replace('/admin/').replace('change/').split('/')
+    return new PathObj(...ar)
+}
+
+
+class PathObj {
+    constructor(app, model, uuid) {
+        this.app = app;
+        this.model = model;
+        this.uuid = uuid;
     }
 }

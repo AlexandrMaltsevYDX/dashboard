@@ -14,7 +14,7 @@ from .reobject import ReObject
 
 
 class ReObjectPlanModel(BaseImageModel):
-    re_object = ForeignKey(
+    objectModel = ForeignKey(
         ReObject,
         related_name="plans_images",
         on_delete=CASCADE,
@@ -26,5 +26,5 @@ class ReObjectPlanModel(BaseImageModel):
         return str(self.uuid)
 
     class Meta:
-        verbose_name = "Планировка объекта"
-        verbose_name_plural = "Планировки объектов"
+        verbose_name = "План объекта"
+        verbose_name_plural = "Планы объекта"

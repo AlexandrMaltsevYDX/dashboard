@@ -5,7 +5,7 @@ from .review import Review
 
 
 class ReviewImageModel(BaseImageModel):
-    review = models.ForeignKey(
+    objectModel = models.ForeignKey(
         Review,
         related_name="reviewimages",
         on_delete=models.CASCADE,

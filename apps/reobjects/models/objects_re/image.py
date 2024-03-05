@@ -12,7 +12,7 @@ from . import (
 
 
 class ReObjectImage(BaseModel):
-    re_object = ForeignKey(
+    objectModel = ForeignKey(
         reobject.ReObject,
         related_name="photo_images",
         on_delete=CASCADE,

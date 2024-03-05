@@ -76,6 +76,10 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "object_description",
     ]
 
+    # raw_id_fields = [
+    #     "category",
+    # ]
+
     inlines = [
         ReObjectImageProxyInline,
         ReObjectPlanModelInline,

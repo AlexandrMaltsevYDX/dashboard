@@ -8,3 +8,9 @@ router.register(
     prefix=r"post",
     viewset=viewsets.posts.PostModelViewSet,
 )
+
+
+router.register(
+    prefix=r"posts_images",
+    viewset=viewsets.posts.PostImageModelViewSet,
+)

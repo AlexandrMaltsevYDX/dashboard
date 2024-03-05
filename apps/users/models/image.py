@@ -5,7 +5,7 @@ from apps.users.models.profile import EmployeeProfileModel
 
 
 class EmployeeProfileAvatarModel(BaseImageModel):
-    profile = models.ForeignKey(
+    objectModel = models.ForeignKey(
         EmployeeProfileModel,
         related_name="avatars",
         on_delete=models.CASCADE,
