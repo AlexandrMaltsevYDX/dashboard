@@ -111,7 +111,7 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
             let body = {image: e.target.files[i], objectModel: objectModel_uuid}
             uploadFile(body, url)
         }
-        // location.reload()
+
     })
 
 
