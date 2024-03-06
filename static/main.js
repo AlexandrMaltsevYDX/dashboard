@@ -104,12 +104,15 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
             }
         }
 
-
         const url = `${_url.origin}/api/v1/${urls[model][key]}/`
 
         for (let i = 0; i < e.target.files.length; i++) {
+            let lastElem = false
+            if (i === e.target.files.length - 1) {
+                lastElem = true
+            }
             let body = {image: e.target.files[i], objectModel: objectModel_uuid}
-            uploadFile(body, url)
+            uploadFile(body, url, lastElem)
         }
 
     })
@@ -124,7 +127,7 @@ function addMultipleFilesInput(key, model, objectModel_uuid) {
 }
 
 
-function uploadFile(body, url) {
+function uploadFile(body, url, lastElem) {
     const {objectModel, image} = body
     console.log("uploadFile", body)
     const formData = new FormData();
@@ -137,6 +140,10 @@ function uploadFile(body, url) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            if (lastElem) {
+                alert("Все загружено")
+                location.reload()
+            }
         })
 }
 
