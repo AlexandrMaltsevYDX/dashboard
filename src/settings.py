@@ -331,5 +331,21 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BROKER_URL = env(
     "CELERY_BROKER_URL",
-    default="redis://localhost/0",
+    default="redis://redis/0",
 )
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = env(
+    "EMAIL_HOST_USER",
+)
+EMAIL_HOST_PASSWORD = env(
+    "EMAIL_HOST_PASSWORD",
+)
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
