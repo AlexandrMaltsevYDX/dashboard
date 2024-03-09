@@ -36,6 +36,6 @@ class ReviewModelViewSet(
         tasks.sent_email.delay(
             subject="Заявка",
             message="Тест",
-            recipient="AlexandrMaltsve@yandex.ru",
+            recipient="slava-stavropol@yandex.ru",
         )
         super().perform_create(serializer)
