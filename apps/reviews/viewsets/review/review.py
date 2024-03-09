@@ -32,6 +32,7 @@ class ReviewModelViewSet(
 
     def perform_create(self, serializer):
         print("===========>     perform_create")
+        print("===========>     perform_create")
         tasks.sent_email.delay(
             subject="Заявка",
             message="Тест",
