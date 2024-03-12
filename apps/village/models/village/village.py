@@ -9,6 +9,7 @@ from django.db.models import (
     RESTRICT,
     OneToOneField,
     BooleanField,
+    PositiveBigIntegerField,
 )
 
 from mdeditor.fields import MDTextField
@@ -32,7 +33,15 @@ class Village(TimeStampedModel, BaseModel):
 
     name = TextField(
         verbose_name="Название объекта",
-        help_text="Адрес",
+        help_text="Введите текст",
+        blank=True,
+        null=True,
+    )
+
+    place = TextField(
+        max_length=255,
+        verbose_name="Адрес",
+        help_text="Введите текст",
         blank=True,
         null=True,
     )
@@ -153,4 +162,11 @@ class Village(TimeStampedModel, BaseModel):
         help_text="скопируйте ссылку iframe из браузера и вставьте в это поле",
         blank=True,
         null=True,
+    )
+
+    price = PositiveBigIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="Цена",
+        help_text="введите знaчение в РУБ, например '1000000' ",
     )
