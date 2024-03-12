@@ -121,10 +121,10 @@ class ReObjectModelSerializer(ModelSerializer):
         slug_field="value",
     )
 
-    coordinates = serializers.attributes.CoordinatesModelSerializer(
-        many=False,
-        read_only=True,
-    )
+    # coordinates = serializers.attributes.CoordinatesModelSerializer(
+    #     many=False,
+    #     read_only=True,
+    # )
 
     # photos
     photo_images = ReObjectImageModelSerializer(
@@ -210,7 +210,7 @@ class ReObjectModelSerializer(ModelSerializer):
             "driveways",
             "village_fences",
             "object_description",
-            "coordinates",
+            # "coordinates",
             "yandex_map_link",
             "date_sale",
             "you_tube_link",

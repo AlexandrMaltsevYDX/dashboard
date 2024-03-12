@@ -46,6 +46,13 @@ class Village(TimeStampedModel, BaseModel):
         null=True,
     )
 
+    infra = TextField(
+        verbose_name="Инфраструктура",
+        help_text="Введите текст",
+        blank=True,
+        null=True,
+    )
+
     distance_CAD = FloatField(
         null=True,
         blank=True,
@@ -69,8 +76,8 @@ class Village(TimeStampedModel, BaseModel):
     )
 
     buildings_of_villages = PositiveIntegerField(
-        verbose_name="Количество домов в поселке",
-        help_text="Количество домов в поселке",
+        verbose_name="Количество объектов в поселке",
+        help_text="Количество объектов в поселке",
         null=True,
         blank=True,
     )

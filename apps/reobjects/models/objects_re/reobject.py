@@ -111,28 +111,28 @@ class ReObject(TimeStampedModel, BaseModel):
     area_plot = FloatField(
         null=True,
         blank=True,
-        verbose_name="Площадь участка, кв. м",
-        help_text="Площадь участка, кв. м",
+        verbose_name="Площадь участка",
+        help_text="Единицы измерения, Площадь участка, кв. м, сотки - выбираются выше",
     )
 
     area_flat = FloatField(
         null=True,
         blank=True,
-        verbose_name="Площадь квартиры общая, кв. м",
-        help_text="Площадь квартиры общая, кв. м",
+        verbose_name="Общая площадь, кв. м",
+        # help_text="Площадь квартиры общая, кв. м",
     )
 
     living_area = FloatField(
         null=True,
         blank=True,
-        verbose_name="Жилая площадь",
+        verbose_name="Жилая площадь, кв. м",
         help_text="Жилая площадь в помещении",
     )
 
     kitchen_area = FloatField(
         null=True,
         blank=True,
-        verbose_name="Площадь кухни",
+        verbose_name="Площадь кухни, кв. м",
         help_text="Площадь кухни в помещении",
     )
 
@@ -233,7 +233,7 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Вторичное жилье, Новостройка... Выберите из списка, или создайте новое '+'",
     )
 
-    date_foundation = DateField(
+    date_foundation = PositiveIntegerField(
         verbose_name="Год постройки дома",
         help_text="введите дату",
         blank=True,
@@ -324,14 +324,14 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Текст с форматированием",
     )
 
-    coordinates = OneToOneField(
-        models.attributes.Coordinates,
-        on_delete=RESTRICT,
-        null=True,
-        blank=True,
-        verbose_name="Координаты объекта",
-        help_text="Широта, Долгота",
-    )
+    # coordinates = OneToOneField(
+    #     models.attributes.Coordinates,
+    #     on_delete=RESTRICT,
+    #     null=True,
+    #     blank=True,
+    #     verbose_name="Координаты объекта",
+    #     help_text="Широта, Долгота",
+    # )
 
     yandex_map_link = TextField(
         verbose_name="Ссылка на YandexMap",

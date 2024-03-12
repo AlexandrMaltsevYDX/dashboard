@@ -3,6 +3,7 @@ from django.db.models import (
     CASCADE,
     RESTRICT,
     FileField,
+    PositiveIntegerField,
 )
 
 from apps.core.models.base import (
@@ -21,6 +22,13 @@ class ReObjectPlanModel(BaseImageModel):
     )
 
     image = FileField(upload_to="reobjects/plans/")
+
+    order = PositiveIntegerField(
+        verbose_name="Порядок",
+        help_text="введите число",
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return str(self.uuid)

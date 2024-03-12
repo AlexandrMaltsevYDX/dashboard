@@ -9,6 +9,7 @@ from apps.reobjects import models
 class ReObjectPlanModelInline(admin.TabularInline):
     model = models.objects_re.ReObjectPlanModel
     extra = 1
+    ordering = ("order",)
     # fields = ("image", "uuid")
     # exclude = ("uuid",)
 
@@ -16,6 +17,16 @@ class ReObjectPlanModelInline(admin.TabularInline):
 class ReObjectImageProxyInline(admin.TabularInline):
     model = models.objects_re.ReObjectImage
     extra = 1
+    ordering = ("order",)
+    # readonly_fields = ("order",)
+
+    # @admin.display(description="order")
+    # def order(self, obj):
+    #     # q = self.model.engineering_service
+    #     q = obj.image.order
+    #     print()
+    #     return f"{q}"
+
     # fields = ("image", "uuid")
     # exclude = ("uuid",)
 
@@ -144,7 +155,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "driveways",
         "village_fences",
         "object_description",
-        "coordinates",
+        # "coordinates",
         "yandex_map_link",
         "date_sale",
         "you_tube_link",

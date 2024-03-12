@@ -9,6 +9,7 @@ from apps.village import models
 class VillageImageModelProxyInline(admin.TabularInline):
     model = models.village.VillageImageModel
     extra = 1
+    ordering = ("order",)
     # fields = ("image", "uuid")
     # exclude = ("uuid",)
 
@@ -16,6 +17,7 @@ class VillageImageModelProxyInline(admin.TabularInline):
 class VillagePlanModelProxyInline(admin.TabularInline):
     model = models.village.VillagePlanModel
     extra = 1
+    ordering = ("order",)
     # fields = ("image", "uuid")
     # exclude = ("uuid",)
 
