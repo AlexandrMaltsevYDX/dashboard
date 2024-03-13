@@ -198,10 +198,11 @@ class ReObject(TimeStampedModel, BaseModel):
         help_text="Выберите из списка, или создайте новое '+'",
     )
 
-    wc = TextField(
-        max_length=255,
+    wc = ForeignKey(
+        models.attributes.WC,
+        on_delete=RESTRICT,
         verbose_name="Санузел",
-        help_text="Введите текст",
+        help_text="Выберите из списка, или создайте новое '+'",
         blank=True,
         null=True,
     )

@@ -20,6 +20,7 @@ from .sales_method import SalesMethod
 from .lift import Lift
 from .approve_usage import ApproveUsage
 from .visible_on_site import VisibleOnSite
+from .wc import WC
 
 __all__ = [
     "Category",
@@ -44,4 +45,5 @@ __all__ = [
     "Lift",
     "ApproveUsage",
     "VisibleOnSite",
+    "WC",
 ]

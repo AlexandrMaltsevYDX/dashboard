@@ -167,6 +167,12 @@ class ReObjectModelSerializer(ModelSerializer):
         source="reobjectsite",
     )
 
+    wc = SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field="value",
+    )
+
     class Meta:
         model = models.objects_re.ReObject
         fields = [
@@ -221,4 +227,5 @@ class ReObjectModelSerializer(ModelSerializer):
             "photo_images",
             "photo_images_files",
             "display_pages",
+            "wc",
         ]

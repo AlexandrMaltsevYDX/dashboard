@@ -97,6 +97,7 @@ class VillageModelSerializer(ModelSerializer):
             "object_description",
             "buildings_on_plot",
             "yandex_map_link",
+            "you_tube_link",
             "price",
             "place",
             "infra",

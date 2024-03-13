@@ -21,6 +21,7 @@ from .lift import LiftModelSerializer
 from .visible_on_site import VisibleOnSiteModelSerializer
 
 from .approve_usage import ApproveUsageModelSerializer
+from .wc import WCModelSerializer
 
 __all__ = [
     "CategoryModelSerializer",
@@ -45,4 +46,5 @@ __all__ = [
     "LiftModelSerializer",
     "ApproveUsageModelSerializer",
     "VisibleOnSiteModelSerializer",
+    "WCModelSerializer",
 ]
