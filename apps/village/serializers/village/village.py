@@ -99,6 +99,7 @@ class VillageModelSerializer(ModelSerializer):
             "yandex_map_link",
             "price",
             "place",
+            "infra",
         ]
 
 
