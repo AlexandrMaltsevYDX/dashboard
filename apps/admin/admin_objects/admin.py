@@ -37,6 +37,13 @@ class ReObjectEmploeeProxyInline(admin.TabularInline):
     # readonly_fields = ("tag", "text")
 
 
+class ReObjectCloseProxyInline(admin.TabularInline):
+    model = models.objects_re.ReObjectClose
+    extra = 1
+    fk_name = "re_object"
+    # readonly_fields = ("tag", "text")
+
+
 class ReObjectVisibleObSiteProxyInline(admin.TabularInline):
     model = models.objects_re.ReObjectVisibleOnSite
     extra = 1
@@ -97,6 +104,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         ReObjectEngineeringServicesProxyInline,
         ReObjectEmploeeProxyInline,
         ReObjectVisibleObSiteProxyInline,
+        ReObjectCloseProxyInline,
     ]
     list_display = [
         "photos_main",
@@ -113,6 +121,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "display_engineering_services",
         "display_agents",
         "display_pages",
+        "display_close",
     )
 
     fields = [
@@ -164,6 +173,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "plans_images",
         "photo_images",
         "display_pages",
+        "display_close",
     ]
 
     def display_engineering_services(self, obj):
@@ -180,15 +190,20 @@ class ReObjectProxyModel(admin.ModelAdmin):
             f"{i.employee.first_name} {i.employee.last_name}"
             for i in obj.reobjectemployees.all()
         ]
-        print(agents)
         return ", ".join(agents)
+
+    def display_close(self, obj):
+        # agents = obj.reobjectemployees.all().values_list(
+        #     "employee__username", flat=True
+        # )
+        closes = [f"ID-{i.close_re_object.id}" for i in obj.reobjectbase.all()]
+        return ", ".join(closes)
 
     def display_pages(self, obj):
         # agents = obj.reobjectemployees.all().values_list(
         #     "employee__username", flat=True
         # )
         pages = [f"{i.page.value}" for i in obj.reobjectsite.all()]
-        print(pages)
         return ", ".join(pages)
 
     def photos_main(self, obj):
@@ -228,3 +243,4 @@ class ReObjectProxyModel(admin.ModelAdmin):
     display_engineering_services.short_description = "Инженерные коммуникации"
     display_agents.short_description = "Агенты"
     display_pages.short_description = "Отображение на сайте"
+    display_close.short_description = "Похожие объекты"

@@ -10,6 +10,7 @@ from .plan_image import ReObjectPlanModelSerializer
 from .reobject_mtm_enjineeringservice import ReObjectEngineeringServicesModelSerializer
 from .reobject_mtm_employee import ReObjectEmployeeModelSerializer
 from .reobject_mtm_visibleonsite import ReObjectVisibleOnSiteModelSerializer
+from .reobject_mtm_reobject import ReObjectCloseModelSerializer
 
 
 class ReObjectModelSerializer(ModelSerializer):
@@ -228,4 +229,12 @@ class ReObjectModelSerializer(ModelSerializer):
             "photo_images_files",
             "display_pages",
             "wc",
+        ]
+
+
+class ReObjectShortModelSerializer(ModelSerializer):
+    class Meta:
+        model = models.objects_re.ReObject
+        fields = [
+            "uuid",
         ]

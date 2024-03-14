@@ -357,7 +357,7 @@ class ReObject(TimeStampedModel, BaseModel):
     # t
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.id}"
 
     class Meta:
         verbose_name = "Объекты недвижимости"

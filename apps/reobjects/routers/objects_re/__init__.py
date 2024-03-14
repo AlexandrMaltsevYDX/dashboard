@@ -10,6 +10,11 @@ router.register(
 )
 
 router.register(
+    prefix=r"objects_islike",
+    viewset=viewsets.objects_re.ReObjectCloseModelViewSet,
+)
+
+router.register(
     prefix=r"objects_images",
     viewset=viewsets.objects_re.ReObjectImageModelViewSet,
 )
