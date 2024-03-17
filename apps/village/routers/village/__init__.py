@@ -17,3 +17,8 @@ router.register(
     prefix=r"villages_plans",
     viewset=viewsets.village.VillagePlanModelViewSet,
 )
+
+router.register(
+    prefix=r"object_invillages",
+    viewset=viewsets.relationships.ReObjectInVillagesModelViewSet,
+)
