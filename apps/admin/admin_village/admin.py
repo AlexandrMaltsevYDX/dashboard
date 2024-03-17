@@ -6,6 +6,13 @@ from django.templatetags.static import static
 from apps.village import models
 
 
+class ReObjectCloseProxyInline(admin.TabularInline):
+    model = models.relationships.ReObjectInVillages
+    extra = 1
+    # fk_name = "villagebase"
+    # readonly_fields = ("tag", "text")
+
+
 class VillageImageModelProxyInline(admin.TabularInline):
     model = models.village.VillageImageModel
     extra = 1
@@ -54,6 +61,7 @@ class VillageProxyModel(admin.ModelAdmin):
         VillagePlanModelProxyInline,
         VillageEngineeringServicesProxyInline,
         VillageEmployeeProxyInline,
+        ReObjectCloseProxyInline,
     ]
     list_display = [
         "id",
@@ -67,6 +75,7 @@ class VillageProxyModel(admin.ModelAdmin):
         "plans_village",
         "display_engineering_services",
         "display_agents",
+        "display_reobject",
     )
 
     def first_image(self, obj):
@@ -125,9 +134,17 @@ class VillageProxyModel(admin.ModelAdmin):
         print(agents)
         return ", ".join(agents)
 
+    def display_reobject(self, obj):
+        objectsinvillages = [
+            f"ID-{i.re_object_in_villages.id}" for i in obj.villagebase.all()
+        ]
+        print(objectsinvillages)
+        return ", ".join(objectsinvillages)
+
     first_image.short_description = "Первая фотография объекта"
     images_village.short_description = "Фото объектов"
     first_plan.short_description = "Первый план объекта"
     plans_village.short_description = "Планы объектов"
     display_engineering_services.short_description = "Инженерные коммуникации"
     display_agents.short_description = "Агенты"
+    display_reobject.short_description = "Объекты в поселках"
