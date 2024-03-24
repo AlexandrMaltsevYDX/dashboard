@@ -7,6 +7,7 @@ from rest_framework import (
 from apps.applications import (
     models,
     serializers,
+    tasks,
 )
 from apps.core.serializers import StandardResultsSetPagination
 
@@ -33,10 +34,14 @@ class ApplicationModelViewSet(
         "get",
     ]
 
-    # def create(self, request, *args, **kwargs):
-    #     print("===========>     create", request.data)
-    #     return super().create(request, *args, **kwargs)
-    #
-    # def perform_create(self, serializer):
-    #     print("===========>     perform_create")
-    #     super().perform_create(serializer)
+    def perform_create(self, serializer):
+        tasks.sent_email.delay(
+            subject="Заявка",
+            message=f"""
+            {serializer.data['text'], }/n
+            {serializer.data['applicant'], }/n
+            {serializer.data['contact'], }/n
+            """,
+            recipient="AlexandrMaltsve@yandex.ru",
+        )
+        super().perform_create(serializer)

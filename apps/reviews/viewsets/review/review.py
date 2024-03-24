@@ -5,7 +5,7 @@ from rest_framework import (
 )
 
 from apps.core.serializers import StandardResultsSetPagination
-from apps.reviews import models, serializers, tasks
+from apps.reviews import models, serializers
 
 
 class ReviewModelViewSet(
@@ -29,13 +29,3 @@ class ReviewModelViewSet(
         # "put",
         "get",
     ]
-
-    def perform_create(self, serializer):
-        print("===========>     perform_create")
-        print("===========>     perform_create")
-        tasks.sent_email.delay(
-            subject="Заявка",
-            message="Тест",
-            recipient="AlexandrMaltsve@yandex.ru",
-        )
-        super().perform_create(serializer)
