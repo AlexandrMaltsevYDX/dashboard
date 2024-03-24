@@ -39,9 +39,9 @@ class ApplicationModelViewSet(
         tasks.send_email.delay(
             subject="Заявка",
             message=f"""
-            {serializer.data['text'], }
-            {serializer.data['applicant'], }
-            {serializer.data['contact'], }
+            {serializer.data['text'] }
+            {serializer.data['applicant'] }
+            {serializer.data['contact'] }
             """,
             recipient="AlexandrMaltsve@yandex.ru",
         )
