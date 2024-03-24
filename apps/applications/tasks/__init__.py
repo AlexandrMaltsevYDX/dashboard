@@ -1,5 +1,5 @@
-from .sent_email import sent_email
+from .sent_email import send_email
 
 __all__ = [
-    "sent_email",
+    "send_email",
 ]

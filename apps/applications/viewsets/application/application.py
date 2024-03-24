@@ -35,7 +35,7 @@ class ApplicationModelViewSet(
     ]
 
     def perform_create(self, serializer):
-        tasks.sent_email.delay(
+        tasks.send_email.delay(
             subject="Заявка",
             message=f"""
             {serializer.data['text'], }/n
