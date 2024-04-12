@@ -5,6 +5,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from apps.reobjects.urls import modulepatterns
+
 api_urlpatterns = [
     path("api/v1/", include("apps.users.urls")),
     path("api/v1/", include("apps.reobjects.urls")),
@@ -23,6 +25,7 @@ urlpatterns = [
 ]
 
 urlpatterns += api_urlpatterns
+urlpatterns += modulepatterns
 
 
 if settings.DEBUG:

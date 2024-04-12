@@ -15,6 +15,7 @@ from pathlib import Path
 
 import environ
 
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -234,6 +235,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+    BASE_DIR / "apps" / "core" / "templates" / "front",
 ]
 
 # Default primary key field type
