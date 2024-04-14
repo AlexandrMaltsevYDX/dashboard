@@ -5,15 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Django Template</title>
+    <link rel="stylesheet" href="{% static 'styles/cfehome-ui.css' %}">
     <link rel="stylesheet" href="{% static 'styles/test.css' %}">
 </head>
 <body>
-    <div class="container">
-        <p class="draggable" draggable="true">1</p>
-        <p class="draggable" draggable="true">2</p>
-        <p class="draggable" draggable="true">3</p>
-        <p class="draggable" draggable="true">4</p>
+<div class="reobject-photo-container mx-auto w-2/3 py-4 px-16">
+    {% for item in order %}
+    <div class="flex flex-row bg-white p-4 m-4 rounded-2xl draggable" draggable="true">
+        <div class="flex flex-col index-box">
+            <p class="text-gray-600 text-2xl">new: <span class="font-semibold index-new">n</span></p>
+            <p class="text-gray-600 text-2xl">old: <span class="font-semibold">{{ item }}</span></p>
+        </div>
+        <img src="{% static 'img/Ivysaur.png' %}" alt="Product Image" class="rounded-2xl size-24 mb-4">
+        <p class="text-gray-600 text-sm">Filename: <span class="font-semibold">Ivysaur.png</span></p>
     </div>
-    <script src="{% static 'test.js' %}"></script>
+    {% endfor %}
+</div>
+<script src="{% static 'test.js' %}"></script>
 </body>
 </html>

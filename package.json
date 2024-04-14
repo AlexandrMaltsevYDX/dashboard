@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "tailwindcss -i static/tailwind-input.css -o apps/core/templates/front/styles/cfehome-ui.css --watch"
+  },
   "dependencies": {
     "tailwindcss": "^3.4.3"
   }

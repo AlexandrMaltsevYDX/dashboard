@@ -1,15 +1,18 @@
 const draggables = document.querySelectorAll('.draggable')
-const containers = document.querySelectorAll('.container')
+const containers = document.querySelectorAll('.reobject-photo-container')
 
-draggables.forEach(draggable => {
+
+draggables.forEach(((draggable, index) => {
+    fillNewOrder()
     draggable.addEventListener('dragstart', () => {
         draggable.classList.add('dragging')
     })
 
     draggable.addEventListener('dragend', () => {
         draggable.classList.remove('dragging')
+        fillNewOrder()
     })
-})
+}))
 
 containers.forEach(container => {
     container.addEventListener('dragover', e => {
@@ -36,4 +39,12 @@ function getDragAfterElement(container, y) {
             return closest
         }
     }, {offset: Number.NEGATIVE_INFINITY}).element
+}
+
+function fillNewOrder() {
+    const draggables = document.querySelectorAll('.draggable')
+    draggables.forEach(((draggable, index) => {
+        const newIndexElem = draggable.querySelector('.index-box').querySelector('.index-new')
+        newIndexElem.textContent = String(index + 1);
+    }))
 }
