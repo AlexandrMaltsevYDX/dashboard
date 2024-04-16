@@ -10,5 +10,6 @@ urlpatterns = [
 ]
 
 modulepatterns = [
-    path("custom/", views.index, name="index"),
+    path("custom/<str:uuid>", views.index, name="index"),
+    path("update_values/", views.update_values, name="update_values"),
 ]

@@ -48,3 +48,30 @@ function fillNewOrder() {
         newIndexElem.textContent = String(index + 1);
     }))
 }
+
+
+async function updateValues() {
+    let cookie = document.cookie
+    let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
+    const newIndexElems = document.querySelectorAll('.index-new');
+    const updatedValues = Array.from(newIndexElems).map(elem => elem.textContent);
+    try {
+        const response = await fetch('/update_values/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({values: updatedValues}),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data.message);
+        } else {
+            console.error('Ошибка при отправке данных:', response.status);
+        }
+    } catch (error) {
+        console.error('Ошибка при отправке данных:', error);
+    }
+}
