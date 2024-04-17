@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="{% static 'styles/test.css' %}">
 </head>
 <body>
-<div class="reobject-photo-container mx-auto w-2/3 py-4 px-16">
+<div id="{{ re_object_uuid }}" data-entity-name="re_object" class="reobject-photo-container mx-auto w-2/3 py-4 px-16">
     {% csrf_token %}
     <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onclick="updateValues()"
     >
-        Нажми меня!
+        Обновить объект: {{ re_object_uuid }}
     </button>
-    {% for image in images %}
-    <div class="flex flex-row bg-white p-4 m-4 rounded-2xl draggable" draggable="true">
+    {% for obj in images_objs %}
+    <div id="{{ obj.uuid }}" data-entity-name="image" class="flex flex-row bg-white p-4 m-4 rounded-2xl draggable" draggable="true">
         <div class="flex flex-col index-box">
-            <p class="text-gray-600 text-2xl">new: <span class="font-semibold index-new">n</span></p>
+            <p class="text-gray-600 text-2xl">new: <span class="font-semibold image-index">n</span></p>
         </div>
-        <img src="/media/{{ image }}" alt="Product Image" class="rounded-2xl size-24 mb-4">
+        <img src="/media/{{ obj.image }}" alt="Product Image" class="rounded-2xl size-24 mb-4 image-url">
         <p class="text-gray-600 text-sm">Filename: <span class="font-semibold">image</span></p>
     </div>
     {% endfor %}

@@ -44,7 +44,7 @@ function getDragAfterElement(container, y) {
 function fillNewOrder() {
     const draggables = document.querySelectorAll('.draggable')
     draggables.forEach(((draggable, index) => {
-        const newIndexElem = draggable.querySelector('.index-box').querySelector('.index-new')
+        const newIndexElem = draggable.querySelector('.index-box').querySelector('.image-index')
         newIndexElem.textContent = String(index + 1);
     }))
 }
@@ -53,8 +53,14 @@ function fillNewOrder() {
 async function updateValues() {
     let cookie = document.cookie
     let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
-    const newIndexElems = document.querySelectorAll('.index-new');
-    const updatedValues = Array.from(newIndexElems).map(elem => elem.textContent);
+    const reObjectId = document.querySelector('[data-entity-name="re_object"]');
+    const imageObjects = document.querySelectorAll('[data-entity-name="image"]');
+    const updatedValuesArr = Array.from(imageObjects).map(elem => parseImageObject(elem));
+    const updatedValues = updatedValuesArr.reduce((obj, x) => {
+            obj[x['uuid']] = Number(x['order']);
+            return obj
+        }, {}
+    )
     try {
         const response = await fetch('/update_values/', {
             method: 'POST',
@@ -62,7 +68,7 @@ async function updateValues() {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrfToken
             },
-            body: JSON.stringify({values: updatedValues}),
+            body: JSON.stringify({re_object_id: reObjectId.id, images: updatedValues}),
         });
 
         if (response.ok) {
@@ -73,5 +79,12 @@ async function updateValues() {
         }
     } catch (error) {
         console.error('Ошибка при отправке данных:', error);
+    }
+}
+
+function parseImageObject(element) {
+    return {
+        uuid: element.id,
+        order: element.querySelector('.image-index').textContent
     }
 }
