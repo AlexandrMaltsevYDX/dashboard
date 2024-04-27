@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 from django.utils.html import format_html
 
 from apps.reviews import models
@@ -36,5 +37,8 @@ class ReviewAdmin(admin.ModelAdmin):
                 '<img src="{}" height="50"/>'.format(photos[0].image.url)
             )
         return "Photo"
+
+    def response_change(self, request, obj):
+        return HttpResponseRedirect(request.path)
 
     photo.short_description = "Photo"

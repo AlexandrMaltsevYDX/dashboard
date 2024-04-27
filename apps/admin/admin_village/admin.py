@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.http import HttpResponseRedirect
 from django.utils.html import format_html
 from .models import VillageProxy
 from django.templatetags.static import static
@@ -140,6 +141,9 @@ class VillageProxyModel(admin.ModelAdmin):
         ]
         print(objectsinvillages)
         return ", ".join(objectsinvillages)
+
+    def response_change(self, request, obj):
+        return HttpResponseRedirect(request.path)
 
     first_image.short_description = "Первая фотография объекта"
     images_village.short_description = "Фото объектов"

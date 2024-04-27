@@ -4,6 +4,7 @@ from django.utils.html import format_html
 from .models import ReObjectProxy, ReObjectImageProxy, ReObjectEngineeringServicesProxy
 from django.templatetags.static import static
 from apps.reobjects import models
+from django.http import HttpResponseRedirect
 
 
 class ReObjectPlanModelInline(admin.TabularInline):
@@ -236,6 +237,9 @@ class ReObjectProxyModel(admin.ModelAdmin):
                 for photo in photos
             )
         )
+
+    def response_change(self, request, obj):
+        return HttpResponseRedirect(request.path)
 
     photo_images.short_description = "Фотографии объекта"
     plans_images.short_description = "Планы объекта"

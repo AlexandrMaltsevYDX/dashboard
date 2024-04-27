@@ -9,23 +9,30 @@
     <link rel="stylesheet" href="{% static 'styles/test.css' %}">
 </head>
 <body>
-<div id="{{ re_object_uuid }}" data-entity-name="re_object" class="reobject-photo-container mx-auto w-2/3 py-4 px-16">
-    {% csrf_token %}
-    <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            onclick="updateValues()"
-    >
-        Обновить объект: {{ re_object_uuid }}
-    </button>
-    {% for obj in images_objs %}
-    <div id="{{ obj.uuid }}" data-entity-name="image" class="flex flex-row bg-white p-4 m-4 rounded-2xl draggable" draggable="true">
-        <div class="flex flex-col index-box">
-            <p class="text-gray-600 text-2xl">new: <span class="font-semibold image-index">n</span></p>
-        </div>
-        <img src="/media/{{ obj.image }}" alt="Product Image" class="rounded-2xl size-24 mb-4 image-url">
-        <p class="text-gray-600 text-sm">Filename: <span class="font-semibold">image</span></p>
+<div class="flex flex-row h-full">
+    <div data-entity-name="re_object_data" class="flex flex-col bg-white p-4 m-4 rounded-2xl align-items-center w-1/4">
+        {% for field in object_fields %}
+            {% include 'front/pages/sort_photos/object_field.html' with field=field %}
+        {% endfor %}
+        <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 mb-4 rounded focus:outline-none focus:shadow-outline"
+                onclick="updateValues()"
+        >
+            Обновить порядок
+        </button>
+        <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 mb-4 rounded focus:outline-none focus:shadow-outline"
+                onclick="goBack()"
+        >
+            Вернуться назад
+        </button>
     </div>
-    {% endfor %}
+    <div id="{{ re_object_uuid }}" data-entity-name="re_object"
+         class="reobject-photo-container mx-auto w-3/4 py-4 px-16 h-screen overflow-y-scroll">
+        {% for obj in images_objs %}
+            {% include 'front/pages/sort_photos/obj.html' with obj=obj %}
+        {% endfor %}
+    </div>
 </div>
 <script src="{% static 'test.js' %}"></script>
 </body>

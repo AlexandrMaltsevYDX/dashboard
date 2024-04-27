@@ -1,0 +1,16 @@
+<div id="{{ obj.uuid }}" data-entity-name="image"
+     class="flex flex-row bg-white p-4 m-4 rounded-2xl draggable align-items-center" draggable="true">
+    <div class="flex flex-col justify-center p-4 index-box ">
+        Новый порядок:
+        <p class="text-gray-600 text-m">new: <span class="font-semibold image-index">n</span></p>
+    </div>
+    <div class="flex flex-col justify-center index-box p-4">
+        Порядок в базе:
+        <p class="text-gray-600 text-m">{{ obj.order }}</p>
+    </div>
+    <img src="/media/{{ obj.image }}" alt="Product Image" class="rounded-2xl size-24 m-0 p-0 image-url">
+    <div class="flex flex-col justify-center index-box p-4">
+        Имя файла:
+        <p class="text-gray-600 text-m">{{ obj.image }}</p>
+    </div>
+</div>

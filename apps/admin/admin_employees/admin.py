@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.http import HttpResponseRedirect
 from django.utils.html import format_html
 from .models import EmployeeProfileProxyModel, EmployeeProfileAvatarModel
 
@@ -84,3 +85,6 @@ class EmployeeProfileProxyModel(admin.ModelAdmin):
         obj.last_name = obj.user.last_name
 
         super().save_model(request, obj, form, change)
+
+    def response_change(self, request, obj):
+        return HttpResponseRedirect(request.path)

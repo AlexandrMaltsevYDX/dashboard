@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 from django.utils.html import format_html
 
 from apps.blog import models
@@ -43,6 +44,9 @@ class PostAdmin(admin.ModelAdmin):
     def tags_display(self, obj):
         post_tags = obj.posts_posts.all().values_list("tag__name", flat=True)
         return ", ".join(post_tags)
+
+    def response_change(self, request, obj):
+        return HttpResponseRedirect(request.path)
 
     photo.short_description = "Photo"
     tags_display.short_description = "Tags"

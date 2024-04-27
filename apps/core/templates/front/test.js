@@ -51,6 +51,9 @@ function fillNewOrder() {
 
 
 async function updateValues() {
+    const _url = new URL(window.location.href)
+    const update_link = _url.pathname.replace('custom', 'update_values')
+    console.log(_url.origin, _url.pathname.replace('custom', 'update_values'))
     let cookie = document.cookie
     let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
     const reObjectId = document.querySelector('[data-entity-name="re_object"]');
@@ -61,8 +64,9 @@ async function updateValues() {
             return obj
         }, {}
     )
+
     try {
-        const response = await fetch('/update_values/', {
+        const response = await fetch(update_link, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,8 +76,8 @@ async function updateValues() {
         });
 
         if (response.ok) {
-            const data = await response.json();
-            console.log(data.message);
+            alert('Порядок изображений успешно сохранен!')
+            location.reload();
         } else {
             console.error('Ошибка при отправке данных:', response.status);
         }
@@ -87,4 +91,8 @@ function parseImageObject(element) {
         uuid: element.id,
         order: element.querySelector('.image-index').textContent
     }
+}
+
+function goBack() {
+    window.history.go(-1)
 }
