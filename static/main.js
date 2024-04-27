@@ -44,10 +44,12 @@ function postProcessing(ev) {
     if (tabName.includes("фото")) {
         console.log("postProcessing", pathObj)
         addMultipleFilesInput("фото", pathObj.model, pathObj.uuid)
-        addChangeOrder("фото", pathObj.model, pathObj.uuid)
+        if (pathObj.model === "reobjectproxy" || pathObj.model === "villageproxy")
+            addChangeOrder("фото", pathObj.model, pathObj.uuid);
     } else if (tabName.includes("планы")) {
         addMultipleFilesInput("планы", pathObj.model, pathObj.uuid)
-        addChangeOrder("планы", pathObj.model, pathObj.uuid)
+        if (pathObj.model === "reobjectproxy" || pathObj.model === "villageproxy")
+            addChangeOrder("планы", pathObj.model, pathObj.uuid);
     } else {
         if (document.getElementById("myButton")) {
             document.getElementById("myButton").remove()
