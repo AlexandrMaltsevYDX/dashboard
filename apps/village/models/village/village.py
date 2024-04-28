@@ -10,6 +10,7 @@ from django.db.models import (
     OneToOneField,
     BooleanField,
     PositiveBigIntegerField,
+    FileField,
 )
 
 from mdeditor.fields import MDTextField
@@ -29,6 +30,13 @@ class Village(TimeStampedModel, BaseModel):
         blank=True,
         null=True,
         verbose_name="Отображать на сайте",
+    )
+
+    pdf = FileField(
+        upload_to="village/pdf/",
+        verbose_name="Буклет",
+        blank=True,
+        null=True,
     )
 
     name = TextField(
