@@ -115,6 +115,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
         "id",
         # "visible_on_site",
         "isbook",
+        "pdf",
         "name",
         "category",
         "place",

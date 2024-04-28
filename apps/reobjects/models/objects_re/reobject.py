@@ -10,6 +10,7 @@ from django.db.models import (
     PositiveBigIntegerField,
     DateField,
     BooleanField,
+    FileField,
 )
 from mdeditor.fields import MDTextField
 from apps.core.models.base import BaseModel, TimeStampedModel
@@ -24,6 +25,13 @@ class ReObject(TimeStampedModel, BaseModel):
         # default=0,
         unique=True,
         verbose_name="ID объекта",
+    )
+
+    pdf = FileField(
+        upload_to="village/pdf/",
+        verbose_name="Буклет",
+        blank=True,
+        null=True,
     )
 
     name = TextField(

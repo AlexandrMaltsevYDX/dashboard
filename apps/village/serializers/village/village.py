@@ -77,6 +77,7 @@ class VillageModelSerializer(ModelSerializer):
             "uuid",
             "id",
             # "visible_on_site",
+            "pdf",
             "name",
             "distance_CAD",
             "area_of_houses",
@@ -101,6 +102,7 @@ class VillageModelSerializer(ModelSerializer):
             "price",
             "place",
             "infra",
+            "web_page_link",
         ]
 
 

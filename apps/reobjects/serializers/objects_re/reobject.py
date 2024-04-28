@@ -181,6 +181,8 @@ class ReObjectModelSerializer(ModelSerializer):
             "created_at",
             "id",
             "name",
+            "isbook",
+            "pdf",
             "category",
             "place",
             "distance_CAD",
