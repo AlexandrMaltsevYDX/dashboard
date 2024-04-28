@@ -75,24 +75,10 @@ class ReObjectProxyModel(admin.ModelAdmin):
     list_filter = [
         # "visible_on_site",
         "category",
-        "repair__name",
     ]
 
     search_fields = [
-        "name",
-        "category__name",
-        "place",
-        "metro",
-        "land_category__value",
-        "approve_usage__value",
-        "ownership__value",
-        "repair__name",
-        "balcony__name",
-        "sales_method__name",
-        "type_house__name",
-        "foundation__value",
-        "wall_material__value",
-        "object_description",
+        "id",
     ]
 
     # raw_id_fields = [
