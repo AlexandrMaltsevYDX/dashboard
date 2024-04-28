@@ -1,4 +1,4 @@
-from django.db.models import CharField, DateField
+from django.db.models import CharField, DateField, BooleanField
 from mdeditor.fields import MDTextField
 from apps.core.models.base import BaseModel, TimeStampedModel
 
@@ -27,6 +27,13 @@ class Review(TimeStampedModel, BaseModel):
     date_sale = DateField(
         verbose_name="Дата публикации",
         help_text="Выберите дату публикации",
+        blank=True,
+        null=True,
+    )
+
+    isAproove = BooleanField(
+        verbose_name="Публикация на сайте",
+        help_text="Да/Нет",
         blank=True,
         null=True,
     )
