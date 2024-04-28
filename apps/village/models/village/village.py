@@ -171,6 +171,13 @@ class Village(TimeStampedModel, BaseModel):
         null=True,
     )
 
+    web_page_link = TextField(
+        verbose_name="Ссылка на сайт послека",
+        help_text="скопируйте ссылку из браузера и вставьте в это поле",
+        blank=True,
+        null=True,
+    )
+
     price = PositiveBigIntegerField(
         null=True,
         blank=True,
