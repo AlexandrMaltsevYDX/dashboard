@@ -354,6 +354,13 @@ class ReObject(TimeStampedModel, BaseModel):
         blank=True,
         null=True,
     )
+
+    isbook = BooleanField(
+        verbose_name="Забронированно",
+        help_text="Да/Нет",
+        blank=True,
+        null=True,
+    )
     # t
 
     def __str__(self):

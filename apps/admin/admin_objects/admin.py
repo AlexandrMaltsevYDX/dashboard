@@ -114,6 +114,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
     fields = [
         "id",
         # "visible_on_site",
+        "isbook",
         "name",
         "category",
         "place",
