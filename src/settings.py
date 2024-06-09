@@ -256,7 +256,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = env(
     "CORS_ALLOWED_ORIGINS",
-    default="http://127.0.0.1:3000,http://localhost:3000,https://expert-crm.ru,https://admin.zagorod-style.ru",
+    default="http://127.0.0.1:3000,http://localhost:3000,https://expert-crm.ru,https://admin.zagorod-style.ru,https://zagorod-style.ru",
 ).split(",")
 
 SIMPLE_JWT = {
