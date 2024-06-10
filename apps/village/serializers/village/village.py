@@ -76,7 +76,7 @@ class VillageModelSerializer(ModelSerializer):
         fields = [
             "uuid",
             "id",
-            # "visible_on_site",
+            "visible_on_site",
             "pdf",
             "name",
             "distance_CAD",
