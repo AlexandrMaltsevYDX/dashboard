@@ -79,6 +79,7 @@ class ReObjectProxyModel(admin.ModelAdmin):
 
     search_fields = [
         "id",
+        "name",
     ]
 
     # raw_id_fields = [
