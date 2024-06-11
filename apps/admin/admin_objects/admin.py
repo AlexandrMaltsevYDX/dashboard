@@ -70,6 +70,7 @@ class ReObjectEngineeringServicesProxyInline(admin.TabularInline):
         return f"{q}"
 
 
+# kaif
 @admin.register(ReObjectProxy)
 class ReObjectProxyModel(admin.ModelAdmin):
     list_filter = [
