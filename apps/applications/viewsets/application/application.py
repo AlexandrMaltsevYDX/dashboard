@@ -43,5 +43,5 @@ class ApplicationModelViewSet(
             {serializer.data['applicant'] }
             {serializer.data['contact'] }
             """,
-            recipient="AlexandrMaltsve@yandex.ru",
+            recipient="zagorodst@yandex.ru",
         )
