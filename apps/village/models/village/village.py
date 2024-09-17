@@ -20,10 +20,12 @@ from apps.reobjects.models import attributes as house_attributes
 
 
 class Village(TimeStampedModel, BaseModel):
-    id = IntegerField(
+    id = TextField(
+        max_length=10,
         blank=True,
         null=True,
         verbose_name="ID посёлка",
+        help_text="Максимум 10 символов",
     )
 
     visible_on_site = BooleanField(

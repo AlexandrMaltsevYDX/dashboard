@@ -19,12 +19,14 @@ from apps.reobjects import models
 
 # Create your models here.
 class ReObject(TimeStampedModel, BaseModel):
-    id = PositiveBigIntegerField(
+    id = TextField(
+        max_length=10,
         # blank=True,
         # null=True,
         # default=0,
         unique=True,
         verbose_name="ID объекта",
+        help_text="Максимум 10 символов",
     )
 
     pdf = FileField(
